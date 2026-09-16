@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Underground Gym - Booking</title>
+  <meta name="description" content="Book a boxing session, ring time, or initial assessment at Old School Boxing Club.">
+  <title>Old School Boxing Club - Booking</title>
 </head>
+
 <body>
 
 <header>
-  <h1>UNDERGROUND GYM</h1>
+  <h1>OLD SCHOOL BOXING CLUB</h1>
+
   <nav>
     <a href="index.html">HOME</a> |
     <a href="equipment.html">EQUIPMENT</a> |
     <a href="booking.html">BOOKING</a> |
-    <a href="trainers.html">PRICES</a> |
+    <a href="prices.html">PRICES</a> |
     <a href="trainers.html">TRAINERS</a> |
     <a href="colophon.html">COLOPHON</a>
   </nav>
@@ -23,118 +26,53 @@
 
 <main>
   <section>
-    <h2>Book Your Training</h2>
-    <p>
-      Fill in the form below to book your training session at <strong>Underground Gym</strong>. Our professional staff will confirm your slot upon arrival.
-    </p>
-  
-  </section>
+    <h2>Book Your Boxing Session</h2>
+    <p>Fill out the form below to reserve an introductory workout or schedule private coaching.</p>
 
-  <hr>
-
-  <section>
-    <h2>BOOKING FORM</h2>
-
-    <form action="#" method="post">
+    <form method="post" action="#">
       <fieldset>
-        <legend>Personal Details</legend>
+        <legend>Contact Information</legend>
 
-        <p>
-          <label for="name">Full Name:</label><br>
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-        </p>
+        <label for="b-name">Full Name:</label><br>
+        <input type="text" id="b-name" name="b-name" placeholder="John Doe" required><br>
 
-        <p>
-          <label for="email">Email:</label><br>
-          <input type="email" id="email" name="email" placeholder="Enter your email" required>
-        </p>
+        <label for="b-email">Email Address:</label><br>
+        <input type="email" id="b-email" name="b-email" placeholder="john@example.com" required><br>
 
-        <p>
-          <label for="phone">Phone Number:</label><br>
-          <input type="tel" id="phone" name="phone" placeholder="+7 700 000 00 00" required>
-        </p>
-
-        <p>
-          <label for="date">Training Date:</label><br>
-          <input type="date" id="date" name="date" required>
-        </p>
-
-        <p>
-          <label for="people">Number of People:</label><br>
-          <input type="number" id="people" name="people" min="1" max="10" value="1" required>
-        </p>
+        <label for="b-phone">Phone Number:</label><br>
+        <input type="tel" id="b-phone" name="b-phone" placeholder="+7 700 000 00 00" required>
       </fieldset>
 
-      <br>
-
       <fieldset>
-        <legend>Session Settings</legend>
+        <legend>Session Details</legend>
 
-        <p>
-          <label for="training">Training Type:</label><br>
-          <select id="training" name="training" required>
-            <option value="">-- Select training type --</option>
-            <option value="Strength Training">Strength Training</option>
-            <option value="Cardio">Cardio</option>
-            <option value="Free Weights">Free Weights</option>
-          </select>
-        </p>
+        <label for="b-coach">Preferred Coach:</label><br>
+        <select id="b-coach" name="b-coach" required>
+          <option value="">Select a Coach</option>
+          <option value="Renat">Renat Latypov (Head Coach)</option>
+          <option value="Rustem">Rustem Makishev (Power & Sparring)</option>
+          <option value="Evgenia">Evgenia Makoviy (Speed & Footwork)</option>
+        </select><br>
 
-        <p>
-          <label for="trainer">Trainer:</label><br>
-          <select id="trainer" name="trainer" required>
-            <option value="">-- Select trainer --</option>
-            <option value="Latypov Renat">Latypov Renat — Strength Training coach</option>
-            <option value="Makoviy Evgeniya">Makoviy Evgeniya — Cardio coach</option>
-            <option value="Rustem Makishev">Rustem Makishev — Free Weights coach</option>
-          </select>
-        </p>
+        <label for="b-date">Preferred Date:</label><br>
+        <input type="date" id="b-date" name="b-date" required><br>
 
-        <p>
-          <label for="time">Training Time:</label><br>
-          <select id="time" name="time" required>
-            <option value="">-- Select training time --</option>
-            <option value="09:00">09:00</option>
-            <option value="12:00">12:00</option>
-            <option value="15:00">15:00</option>
-            <option value="18:00">18:00</option>
-            <option value="20:00">20:00</option>
-          </select>
-        </p>
+        <p>Training Goals:</p>
+        <input type="checkbox" id="goal-technique" name="goal" value="technique">
+        <label for="goal-technique">Boxing Fundamentals & Stance</label><br>
 
-        <p>
-          Membership Type:<br>
-          <input type="radio" id="standard" name="membership" value="Standard" required checked>
-          <label for="standard">Standard</label><br>
+        <input type="checkbox" id="goal-sparring" name="goal" value="sparring">
+        <label for="goal-sparring">Sparring Preparation</label><br>
 
-          <input type="radio" id="premium" name="membership" value="Premium">
-          <label for="premium">Premium</label>
-        </p>
+        <input type="checkbox" id="goal-cardio" name="goal" value="cardio">
+        <label for="goal-cardio">Cardio & Weight Loss</label><br><br>
 
-        <p>
-          Additional Services:<br>
-          <input type="checkbox" id="personalTrainer" name="service" value="Personal Trainer">
-          <label for="personalTrainer">Personal Trainer (<abbr title="Personal Trainer">PT</abbr>)</label><br>
-
-          <input type="checkbox" id="locker" name="service" value="Locker">
-          <label for="locker">Locker</label><br>
-
-          <input type="checkbox" id="shower" name="service" value="Shower">
-          <label for="shower">Shower Pass</label>
-        </p>
-
-        <p>
-          <label for="message">Additional Message:</label><br>
-          <textarea id="message" name="message" rows="5" cols="40" placeholder="Write your message here..."></textarea>
-        </p>
+        <label for="b-notes">Additional Notes:</label><br>
+        <textarea id="b-notes" name="b-notes" rows="4" placeholder="Mention your boxing experience level..."></textarea>
       </fieldset>
 
-      <br>
-
-      <p>
-        <button type="submit">BOOK TRAINING</button>
-        <button type="reset">RESET</button>
-      </p>
+      <input type="submit" value="Submit Reservation">
+      <input type="reset" value="Clear Form">
     </form>
   </section>
 </main>
@@ -142,9 +80,7 @@
 <hr>
 
 <footer>
-  <p>
-    <small>&copy; 2026 Underground Gym. All rights reserved.</small>
-  </p>
+  <p><small>&copy; 2026 Old School Boxing Club.</small></p>
 </footer>
 
 </body>
