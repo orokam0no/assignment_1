@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Book a boxing session, ring time, or initial assessment at Old School Boxing Club.">
+  <meta name="description" content="Book a boxing session at Old School Boxing Club in Astana.">
   <title>Old School Boxing Club - Booking</title>
 </head>
 
 <body>
 
-<header>
+<header style="text-align: center;">
   <h1>OLD SCHOOL BOXING CLUB</h1>
 
   <nav>
@@ -24,63 +24,51 @@
 
 <hr>
 
-<main>
-  <section>
-    <h2>Book Your Boxing Session</h2>
-    <p>Fill out the form below to reserve an introductory workout or schedule private coaching.</p>
+<main style="text-align: center; max-width: 800px; margin: 0 auto;">
+  <section id="booking-info">
+    <h2>Book Your Training Session</h2>
+    <p>
+      Ready to start training? Fill out the form below or contact us directly via phone or WhatsApp to schedule your trial session or personal training.
+    </p>
 
-    <form method="post" action="#">
-      <fieldset>
-        <legend>Contact Information</legend>
+    <br>
 
-        <label for="b-name">Full Name:</label><br>
-        <input type="text" id="b-name" name="b-name" placeholder="John Doe" required><br>
+    <form style="display: inline-block; text-align: left; margin: 0 auto;">
+      <p>
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required style="width: 250px;">
+      </p>
 
-        <label for="b-email">Email Address:</label><br>
-        <input type="email" id="b-email" name="b-email" placeholder="john@example.com" required><br>
+      <p>
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (700) 000-00-00" required style="width: 250px;">
+      </p>
 
-        <label for="b-phone">Phone Number:</label><br>
-        <input type="tel" id="b-phone" name="b-phone" placeholder="+7 700 000 00 00" required>
-      </fieldset>
+      <p>
+        <label for="session-type">Training Type:</label><br>
+        <select id="session-type" name="session-type" style="width: 258px;">
+          <option value="group">Group Training</option>
+          <option value="personal">Personal Training</option>
+          <option value="minigroup">Mini-Group / Split</option>
+        </select>
+      </p>
 
-      <fieldset>
-        <legend>Session Details</legend>
-
-        <label for="b-coach">Preferred Coach:</label><br>
-        <select id="b-coach" name="b-coach" required>
-          <option value="">Select a Coach</option>
-          <option value="Renat">Renat Latypov (Head Coach)</option>
-          <option value="Rustem">Rustem Makishev (Power & Sparring)</option>
-          <option value="Evgenia">Evgenia Makoviy (Speed & Footwork)</option>
-        </select><br>
-
-        <label for="b-date">Preferred Date:</label><br>
-        <input type="date" id="b-date" name="b-date" required><br>
-
-        <p>Training Goals:</p>
-        <input type="checkbox" id="goal-technique" name="goal" value="technique">
-        <label for="goal-technique">Boxing Fundamentals & Stance</label><br>
-
-        <input type="checkbox" id="goal-sparring" name="goal" value="sparring">
-        <label for="goal-sparring">Sparring Preparation</label><br>
-
-        <input type="checkbox" id="goal-cardio" name="goal" value="cardio">
-        <label for="goal-cardio">Cardio & Weight Loss</label><br><br>
-
-        <label for="b-notes">Additional Notes:</label><br>
-        <textarea id="b-notes" name="b-notes" rows="4" placeholder="Mention your boxing experience level..."></textarea>
-      </fieldset>
-
-      <input type="submit" value="Submit Reservation">
-      <input type="reset" value="Clear Form">
+      <p>
+        <input type="submit" value="Submit Request">
+      </p>
     </form>
   </section>
 </main>
 
 <hr>
 
-<footer>
+<footer style="text-align: center;">
   <p><small>&copy; 2026 Old School Boxing Club.</small></p>
+  <p>
+    <a href="mailto:info@oldschoolboxing.kz">info@oldschoolboxing.kz</a>
+    &nbsp;&mdash;&nbsp;
+    <a href="tel:+77087253626">+7 708 725 36 26</a>
+  </p>
 </footer>
 
 </body>
