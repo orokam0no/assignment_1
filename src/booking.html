@@ -28,7 +28,7 @@
   <section id="booking-info">
     <h2>Book Your Training Session</h2>
     <p>
-      Ready to start training? Fill out the form below or contact us directly via phone or WhatsApp to schedule your trial session or personal training.
+      Ready to start training? Fill out the form below to select your trainer, session time, and preferred package.
     </p>
 
     <br>
@@ -45,6 +45,16 @@
       </p>
 
       <p>
+        <label for="trainer">Select Trainer:</label><br>
+        <select id="trainer" name="trainer" style="width: 258px;">
+          <option value="baglan">Baglan Kadyrbay (Fundamentals)</option>
+          <option value="kanysh">Kanysh Seidazym (Sparring Prep)</option>
+          <option value="mikhail">Mikhail Shindin (Cardio & Weight Loss)</option>
+          <option value="any">Any Available Trainer</option>
+        </select>
+      </p>
+
+      <p>
         <label for="session-type">Training Type:</label><br>
         <select id="session-type" name="session-type" style="width: 258px;">
           <option value="group">Group Training</option>
@@ -54,7 +64,18 @@
       </p>
 
       <p>
+        <label for="session-time">Preferred Time Slot:</label><br>
+        <select id="session-time" name="session-time" style="width: 258px;">
+          <option value="morning_09">09:00 - 10:30 (Morning)</option>
+          <option value="afternoon_15">15:00 - 16:30 (Afternoon)</option>
+          <option value="evening_18">18:30 - 20:00 (Evening Peak)</option>
+          <option value="evening_20">20:00 - 21:30 (Late Evening)</option>
+        </select>
+      </p>
+
+      <p>
         <input type="submit" value="Submit Request">
+        <input type="reset" value="Reset">
       </p>
     </form>
   </section>
