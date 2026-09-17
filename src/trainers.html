@@ -6,84 +6,83 @@
   <meta name="description" content="Meet the experienced boxing trainers and coaches at Old School Boxing Club in Astana.">
   <meta name="author" content="Arslan">
   <title>Old School Boxing Club - Trainers</title>
+
+  <!-- CSS Cascade Order: base.css first, personal stylesheet second -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/asylkhan.css">
 </head>
 
 <body>
 
-<header style="text-align: center;">
-  <h1>OLD SCHOOL BOXING CLUB</h1>
+<header class="main-header">
+  <h1 class="gym-title">OLD SCHOOL BOXING CLUB</h1>
 
-  <nav>
-    <a href="index.html">HOME</a> |
-    <a href="equipment.html">EQUIPMENT</a> |
-    <a href="booking.html">BOOKING</a> |
-    <a href="prices.html">PRICES</a> |
-    <a href="trainers.html">TRAINERS</a> |
-    <a href="login.html">ACCOUNT</a>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="equipment.html" class="nav-link">EQUIPMENT</a>
+    <a href="booking.html" class="nav-link">BOOKING</a>
+    <a href="prices.html" class="nav-link">PRICES</a>
+    <a href="trainers.html" class="nav-link active">TRAINERS</a>
+    <a href="login.html" class="nav-link">ACCOUNT</a>
   </nav>
 </header>
 
-<hr>
-
-<section id="coaches-intro" style="text-align: center;">
+<section id="coaches-intro" class="hero-section">
   <h2>Our Coaching Staff</h2>
-  <p>
+  <p class="welcome-text">
     Learn from certified trainers dedicated to classical boxing fundamentals, footwork, and tactical ring strategy.
   </p>
 </section>
 
-<hr>
+<main class="main-content">
+  <div class="equipment-grid">
+    <article id="baglan-kadyrbay" class="card-wrapper price-card">
+      <h3>Baglan Kadyrbay</h3>
+      <figure class="media-container">
+        <img src="images/gym9.png" alt="Baglan Kadyrbay - Head Coach" width="300" class="feature-img">
+        <figcaption class="image-caption"><small>Head Coach &amp; Boxing Fundamentals Specialist</small></figcaption>
+      </figure>
+      <p><strong>Specialization:</strong> Head Coach &amp; Boxing Fundamentals</p>
+      <p>
+        Focuses on building proper stance, basic jab-cross mechanics, defensive movement, and beginner-to-intermediate conditioning.
+      </p>
+    </article>
 
-<main style="text-align: center;">
-  <article id="baglan-kadyrbay">
-    <h3>Baglan Kadyrbay</h3>
-    <figure>
-      <img src="images/gym9.png" alt="Baglan Kadyrbay - Head Coach" width="300">
-      <figcaption><small>Head Coach &amp; Boxing Fundamentals Specialist</small></figcaption>
-    </figure>
-    <p><strong>Specialization:</strong> Head Coach &amp; Boxing Fundamentals</p>
-    <p>
-      Focuses on building proper stance, basic jab-cross mechanics, defensive movement, and beginner-to-intermediate conditioning.
-    </p>
-  </article>
+    <article id="kanysh-seidazym" class="card-wrapper price-card">
+      <h3>Kanysh Seidazym</h3>
+      <figure class="media-container">
+        <img src="images/gym8.png" alt="Kanysh Seidazym - Advanced Trainer" width="300" class="feature-img">
+        <figcaption class="image-caption"><small>Advanced Technical &amp; Sparring Coach</small></figcaption>
+      </figure>
+      <p><strong>Specialization:</strong> Advanced Technical &amp; Sparring Prep</p>
+      <p>
+        Specializes in counter-striking, distance management, ring control, and tactical preparation for active sparring.
+      </p>
+    </article>
 
-  <hr>
+    <article id="mikhail-shindin" class="card-wrapper price-card">
+      <h3>Mikhail Shindin</h3>
+      <figure class="media-container">
+        <img src="images/gym7.png" alt="Mikhail Shindin - Conditioning Coach" width="300" class="feature-img">
+        <figcaption class="image-caption"><small>Conditioning &amp; Stamina Specialist</small></figcaption>
+      </figure>
+      <p><strong>Specialization:</strong> Conditioning &amp; Weight Loss Boxing</p>
+      <p>
+        Combines intense heavy-bag combinations, mitt work, and functional stamina drills for overall fitness and endurance.
+      </p>
+    </article>
+  </div>
 
-  <article id="kanysh-seidazym">
-    <h3>Kanysh Seidazym</h3>
-    <figure>
-      <img src="images/gym8.png" alt="Kanysh Seidazym - Advanced Trainer" width="300">
-      <figcaption><small>Advanced Technical &amp; Sparring Coach</small></figcaption>
-    </figure>
-    <p><strong>Specialization:</strong> Advanced Technical &amp; Sparring Prep</p>
-    <p>
-      Specializes in counter-striking, distance management, ring control, and tactical preparation for active sparring.
-    </p>
-  </article>
-
-  <hr>
-
-  <article id="mikhail-shindin">
-    <h3>Mikhail Shindin</h3>
-    <figure>
-      <img src="images/gym7.png" alt="Mikhail Shindin - Conditioning Coach" width="300">
-      <figcaption><small>Conditioning &amp; Stamina Specialist</small></figcaption>
-    </figure>
-    <p><strong>Specialization:</strong> Conditioning &amp; Weight Loss Boxing</p>
-    <p>
-      Combines intense heavy-bag combinations, mitt work, and functional stamina drills for overall fitness and endurance.
-    </p>
-  </article>
+  <!-- Fixed positioning requirement demonstration button -->
+  <a href="booking.html" id="quick-book-link" class="quick-book-btn">Book Now</a>
 </main>
 
-<hr>
-
-<footer style="text-align: center;">
+<footer class="main-footer">
   <p><small>&copy; 2026 Old School Boxing Club.</small></p>
   <p>
-    <a href="mailto:info@oldschoolboxing.kz">info@oldschoolboxing.kz</a>
+    <a href="mailto:info@oldschoolboxing.kz" class="footer-link">info@oldschoolboxing.kz</a>
     |
-    <a href="tel:+77087253626">+7 708 725 36 26</a>
+    <a href="tel:+77087253626" class="footer-link">+7 708 725 36 26</a>
   </p>
 </footer>
 

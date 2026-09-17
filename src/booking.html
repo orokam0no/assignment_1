@@ -5,90 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Book a boxing session at Old School Boxing Club in Astana.">
   <title>Old School Boxing Club - Booking</title>
+
+  <!-- CSS Cascade Order: base.css first, personal stylesheet second -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/asylkhan.css">
 </head>
 
 <body>
 
-<header style="text-align: center;">
-  <h1>OLD SCHOOL BOXING CLUB</h1>
+<header class="main-header">
+  <h1 class="gym-title">OLD SCHOOL BOXING CLUB</h1>
 
-  <nav>
-    <a href="index.html">HOME</a> |
-    <a href="equipment.html">EQUIPMENT</a> |
-    <a href="booking.html">BOOKING</a> |
-    <a href="prices.html">PRICES</a> |
-    <a href="trainers.html">TRAINERS</a> |
-    <a href="login.html">ACCOUNT</a>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="equipment.html" class="nav-link">EQUIPMENT</a>
+    <a href="booking.html" class="nav-link active">BOOKING</a>
+    <a href="prices.html" class="nav-link">PRICES</a>
+    <a href="trainers.html" class="nav-link">TRAINERS</a>
+    <a href="login.html" class="nav-link">ACCOUNT</a>
   </nav>
 </header>
 
-<hr>
-
-<main style="text-align: center;">
-  <section id="booking-info">
+<main class="main-content flex-center-box">
+  <section id="booking-info" class="hero-section card-wrapper">
     <h2>Book Your Training Session</h2>
-    <p>
+    <p class="welcome-text">
       Ready to start training? Fill out the form below to select your trainer, session time, and preferred package.
     </p>
 
-    <br>
+    <!-- Styled Form Container -->
+    <form class="booking-form">
+      <div class="form-group">
+        <label for="name" class="form-label">Full Name:</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+      </div>
 
-    <form style="display: inline-block; text-align: left;">
-      <p>
-        <label for="name">Full Name:</label><br>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-      </p>
+      <div class="form-group">
+        <label for="phone" class="form-label">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+7 (700) 000-00-00" required>
+      </div>
 
-      <p>
-        <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="phone" name="phone" placeholder="+7 (700) 000-00-00" required>
-      </p>
-
-      <p>
-        <label for="trainer">Select Trainer:</label><br>
-        <select id="trainer" name="trainer">
+      <div class="form-group">
+        <label for="trainer" class="form-label">Select Trainer:</label>
+        <select id="trainer" name="trainer" class="form-select">
           <option value="baglan">Baglan Kadyrbay (Fundamentals)</option>
           <option value="kanysh">Kanysh Seidazym (Sparring Prep)</option>
           <option value="mikhail">Mikhail Shindin (Cardio &amp; Weight Loss)</option>
           <option value="any">Any Available Trainer</option>
         </select>
-      </p>
+      </div>
 
-      <p>
-        <label for="session-type">Training Type:</label><br>
-        <select id="session-type" name="session-type">
+      <div class="form-group">
+        <label for="session-type" class="form-label">Training Type:</label>
+        <select id="session-type" name="session-type" class="form-select">
           <option value="group">Group Training</option>
           <option value="personal">Personal Training</option>
           <option value="minigroup">Mini-Group / Split</option>
         </select>
-      </p>
+      </div>
 
-      <p>
-        <label for="session-time">Preferred Time Slot:</label><br>
-        <select id="session-time" name="session-time">
+      <div class="form-group">
+        <label for="session-time" class="form-label">Preferred Time Slot:</label>
+        <select id="session-time" name="session-time" class="form-select">
           <option value="morning_09">09:00 - 10:30 (Morning)</option>
           <option value="afternoon_15">15:00 - 16:30 (Afternoon)</option>
           <option value="evening_18">18:30 - 20:00 (Evening Peak)</option>
           <option value="evening_20">20:00 - 21:30 (Late Evening)</option>
         </select>
-      </p>
+      </div>
 
-      <p>
-        <input type="submit" value="Submit Request">
-        <input type="reset" value="Reset">
-      </p>
+      <div class="form-actions">
+        <input type="submit" id="main-submit" class="form-btn btn-submit" value="Submit Request">
+        <input type="reset" class="form-btn btn-reset" value="Reset">
+      </div>
     </form>
   </section>
+
+  <!-- Fixed positioning requirement demonstration button -->
+  <a href="booking.html" id="quick-book-link" class="quick-book-btn">Book Now</a>
 </main>
 
-<hr>
-
-<footer style="text-align: center;">
+<footer class="main-footer">
   <p><small>&copy; 2026 Old School Boxing Club.</small></p>
   <p>
-    <a href="mailto:info@oldschoolboxing.kz">info@oldschoolboxing.kz</a>
+    <a href="mailto:info@oldschoolboxing.kz" class="footer-link">info@oldschoolboxing.kz</a>
     |
-    <a href="tel:+77087253626">+7 708 725 36 26</a>
+    <a href="tel:+77087253626" class="footer-link">+7 708 725 36 26</a>
   </p>
 </footer>
 

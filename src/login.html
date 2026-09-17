@@ -6,110 +6,107 @@
   <meta name="description" content="Sign in or create an account at Old School Boxing Club.">
   <meta name="author" content="Arslan">
   <title>Old School Boxing Club - Account Access</title>
+
+  <!-- CSS Cascade Order: base.css first, personal stylesheet second -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/asylkhan.css">
 </head>
 
 <body>
 
-<header>
-  <center>
-    <h1>OLD SCHOOL BOXING CLUB</h1>
+<header class="main-header">
+  <h1 class="gym-title">OLD SCHOOL BOXING CLUB</h1>
 
-    <nav>
-      <a href="index.html">HOME</a> |
-      <a href="equipment.html">EQUIPMENT</a> |
-      <a href="booking.html">BOOKING</a> |
-      <a href="prices.html">PRICES</a> |
-      <a href="trainers.html">TRAINERS</a> |
-      <a href="login.html">ACCOUNT</a>
-    </nav>
-  </center>
+  <nav class="main-nav">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="equipment.html" class="nav-link">EQUIPMENT</a>
+    <a href="booking.html" class="nav-link">BOOKING</a>
+    <a href="prices.html" class="nav-link">PRICES</a>
+    <a href="trainers.html" class="nav-link">TRAINERS</a>
+    <a href="login.html" class="nav-link active">ACCOUNT</a>
+  </nav>
 </header>
 
-<hr>
+<main class="main-content flex-center-box">
+  <section id="account-access" class="hero-section">
+    <h2>Member Portal</h2>
+    <p class="welcome-text">Log in to your athlete account or register as a new member.</p>
 
-<main>
-  <center>
-    <section id="account-access">
-      <h2>Member Portal</h2>
-      <p>Log in to your athlete account or register as a new member.</p>
-
-      <br>
-
-      <article>
-        <form action="#" method="post">
+    <div class="equipment-grid">
+      <!-- Sign In Form -->
+      <article class="card-wrapper">
+        <form action="#" method="post" class="booking-form">
           <fieldset>
-            <legend><strong>Sign In </strong></legend>
-            <br>
-            <p>
-              <label for="login-email">Email Address:</label><br>
-              <input type="email" id="login-email" name="login_email" placeholder="name@example.com" required>
-            </p>
+            <legend>Sign In</legend>
 
-            <p>
-              <label for="login-password">Password:</label><br>
-              <input type="password" id="login-password" name="login_password" required>
-            </p>
+            <div class="form-group">
+              <label for="login-email" class="form-label">Email Address:</label>
+              <input type="email" id="login-email" name="login_email" class="form-input" placeholder="name@example.com" required>
+            </div>
 
-            <p>
-              <input type="submit" value="Log In">
-            </p>
+            <div class="form-group">
+              <label for="login-password" class="form-label">Password:</label>
+              <input type="password" id="login-password" name="login_password" class="form-input" required>
+            </div>
+
+            <div class="form-actions">
+              <input type="submit" class="form-btn btn-submit" value="Log In">
+            </div>
           </fieldset>
         </form>
       </article>
 
-      <br><hr><br>
-
-      <article>
-        <form action="#" method="post">
+      <!-- Registration Form -->
+      <article class="card-wrapper">
+        <form action="#" method="post" class="booking-form">
           <fieldset>
-            <legend><strong>Create Account </strong></legend>
-            <br>
-            <p>
-              <label for="reg-name">Full Name:</label><br>
-              <input type="text" id="reg-name" name="reg_name" placeholder="First and last name" required>
-            </p>
+            <legend>Create Account</legend>
 
-            <p>
-              <label for="reg-email">Email Address:</label><br>
-              <input type="email" id="reg-email" name="reg_email" placeholder="name@example.com" required>
-            </p>
+            <div class="form-group">
+              <label for="reg-name" class="form-label">Full Name:</label>
+              <input type="text" id="reg-name" name="reg_name" class="form-input" placeholder="First and last name" required>
+            </div>
 
-            <p>
-              <label for="reg-password">Create Password:</label><br>
-              <input type="password" id="reg-password" name="reg_password" required>
-            </p>
+            <div class="form-group">
+              <label for="reg-email" class="form-label">Email Address:</label>
+              <input type="email" id="reg-email" name="reg_email" class="form-input" placeholder="name@example.com" required>
+            </div>
 
-            <p>
-              <label for="membership-level">Membership Goal:</label><br>
-              <select id="membership-level" name="membership_level">
+            <div class="form-group">
+              <label for="reg-password" class="form-label">Create Password:</label>
+              <input type="password" id="reg-password" name="reg_password" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="membership-level" class="form-label">Membership Goal:</label>
+              <select id="membership-level" name="membership_level" class="form-select">
                 <option value="beginner">Beginner / Fundamentals</option>
                 <option value="amateur">Amateur Boxer</option>
                 <option value="pro">Sparring &amp; Pro Prep</option>
               </select>
-            </p>
+            </div>
 
-            <p>
-              <input type="submit" value="Register Account">
-              <input type="reset" value="Clear Form">
-            </p>
+            <div class="form-actions">
+              <input type="submit" class="form-btn btn-submit" value="Register Account">
+              <input type="reset" class="form-btn btn-reset" value="Clear Form">
+            </div>
           </fieldset>
         </form>
       </article>
-    </section>
-  </center>
+    </div>
+  </section>
+
+  <!-- Fixed positioning requirement demonstration button -->
+  <a href="booking.html" id="quick-book-link" class="quick-book-btn">Book Now</a>
 </main>
 
-<hr>
-
-<footer>
-  <center>
-    <p><small>&copy; 2026 Old School Boxing Club.</small></p>
-    <p>
-      <a href="mailto:info@oldschoolboxing.kz">info@oldschoolboxing.kz</a>
-      |
-      <a href="tel:+77087253626">+7 708 725 36 26</a>
-    </p>
-  </center>
+<footer class="main-footer">
+  <p><small>&copy; 2026 Old School Boxing Club.</small></p>
+  <p>
+    <a href="mailto:info@oldschoolboxing.kz" class="footer-link">info@oldschoolboxing.kz</a>
+    |
+    <a href="tel:+77087253626" class="footer-link">+7 708 725 36 26</a>
+  </p>
 </footer>
 
 </body>
