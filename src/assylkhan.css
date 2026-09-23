@@ -13,7 +13,7 @@
 
 .welcome-text {
     margin-top: 10px;
-    color: #aaaaaa;
+    color: gray;
 }
 
 .equipment-grid {
@@ -24,10 +24,10 @@
 }
 
 .card-wrapper {
-    background-color: #1e1e1e;
+    background-color: black;
     border-radius: 8px;
     padding: 20px;
-    border: 1px solid #333333;
+    border: 1px solid gray;
     text-align: center;
 }
 
@@ -47,8 +47,8 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #ffd700;
-    color: #000000;
+    background-color: yellow;
+    color: black;
     padding: 12px 20px;
     border-radius: 50px;
     text-decoration: none;
@@ -56,3 +56,4 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
+
