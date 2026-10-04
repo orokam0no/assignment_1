@@ -1,88 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Meet the experienced boxing trainers and coaches at Old School Boxing Club in Astana.">
-  <meta name="author" content="Arslan">
+
+  <meta name="description"
+        content="Meet the professional boxing coaches at Old School Boxing Club in Astana.">
+
   <title>Old School Boxing Club - Trainers</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
   <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="arslan.css">
+  <link rel="stylesheet" href="pages.css">
 </head>
 
-<body>
+<body class="bg-black text-white lh-base">
 
-<header class="main-header">
-  <h1 class="gym-title">OLD SCHOOL BOXING CLUB</h1>
+<header class="main-header-bootstrap bg-black border-bottom border-2 border-warning">
 
-  <nav class="main-nav">
-    <a href="index.html" class="nav-link">HOME</a>
-    <a href="equipment.html" class="nav-link">EQUIPMENT</a>
-    <a href="booking.html" class="nav-link">BOOKING</a>
-    <a href="prices.html" class="nav-link">PRICES</a>
-    <a href="trainers.html" class="nav-link active">TRAINERS</a>
-    <a href="login.html" class="nav-link">ACCOUNT</a>
+  <nav class="navbar navbar-expand-md navbar-dark container py-3">
+
+    <a class="navbar-brand text-warning fw-bold fs-5 brand-animation"
+       href="index.html">
+      OLD SCHOOL BOXING CLUB
+    </a>
+
+    <button class="navbar-toggler border-warning"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <div class="navbar-nav ms-auto text-center gap-md-2 nav-animation">
+
+        <a href="index.html" class="nav-link fw-semibold nav-popup"
+           data-label="Home page">HOME</a>
+
+        <a href="equipment.html" class="nav-link fw-semibold nav-popup"
+           data-label="View our equipment">EQUIPMENT</a>
+
+        <a href="booking.html" class="nav-link fw-semibold nav-popup"
+           data-label="Book a training session">BOOKING</a>
+
+        <a href="prices.html" class="nav-link fw-semibold nav-popup"
+           data-label="View membership prices">PRICES</a>
+
+        <a href="trainers.html"
+           class="nav-link fw-semibold active nav-popup"
+           data-label="Meet our trainers"
+           aria-current="page">TRAINERS</a>
+
+        <a href="login.html" class="nav-link fw-semibold nav-popup"
+           data-label="Member account">ACCOUNT</a>
+
+      </div>
+
+    </div>
+
   </nav>
+
 </header>
 
-<section id="coaches-intro" class="hero-section">
-  <h2>Our Coaching Staff</h2>
-  <p class="welcome-text">
-    Learn from certified trainers dedicated to classical boxing fundamentals, footwork, and tactical ring strategy.
+
+<section class="container text-center py-5">
+
+  <h1 class="display-5 fw-bold mb-3">
+    Meet Our Trainers
+  </h1>
+
+  <p class="lead text-secondary mb-0">
+    Train with experienced boxing coaches focused on technique,
+    discipline, conditioning, and real ring skills.
   </p>
+
 </section>
 
-<main class="main-content">
-  <div class="equipment-grid">
-    <article id="baglan-kadyrbay" class="card-wrapper price-card">
-      <h3>Baglan Kadyrbay</h3>
-      <figure class="media-container">
-        <img src="images/gym9.png" alt="Baglan Kadyrbay - Head Coach" width="300" class="feature-img">
-        <figcaption class="image-caption"><small>Head Coach &amp; Boxing Fundamentals Specialist</small></figcaption>
-      </figure>
-      <p><strong>Specialization:</strong> Head Coach &amp; Boxing Fundamentals</p>
-      <p>
-        Focuses on building proper stance, basic jab-cross mechanics, defensive movement, and beginner-to-intermediate conditioning.
-      </p>
-    </article>
 
-    <article id="kanysh-seidazym" class="card-wrapper price-card">
-      <h3>Kanysh Seidazym</h3>
-      <figure class="media-container">
-        <img src="images/gym8.png" alt="Kanysh Seidazym - Advanced Trainer" width="300" class="feature-img">
-        <figcaption class="image-caption"><small>Advanced Technical &amp; Sparring Coach</small></figcaption>
-      </figure>
-      <p><strong>Specialization:</strong> Advanced Technical &amp; Sparring Prep</p>
-      <p>
-        Specializes in counter-striking, distance management, ring control, and tactical preparation for active sparring.
-      </p>
-    </article>
+<main id="trainers-list" class="container pb-5">
 
-    <article id="mikhail-shindin" class="card-wrapper price-card">
-      <h3>Mikhail Shindin</h3>
-      <figure class="media-container">
-        <img src="images/gym7.png" alt="Mikhail Shindin - Conditioning Coach" width="300" class="feature-img">
-        <figcaption class="image-caption"><small>Conditioning &amp; Stamina Specialist</small></figcaption>
-      </figure>
-      <p><strong>Specialization:</strong> Conditioning &amp; Weight Loss Boxing</p>
-      <p>
-        Combines intense heavy-bag combinations, mitt work, and functional stamina drills for overall fitness and endurance.
-      </p>
-    </article>
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <article id="trainer-baglan"
+               class="card bg-black text-white border-secondary h-100 shadow-sm">
+
+        <img src="images/gym9.png"
+             class="card-img-top trainer-img"
+             alt="Boxing trainer Baglan Kadyrbay">
+
+        <div class="card-body d-flex flex-column text-center">
+
+          <h2 class="h3 text-warning fw-bold">
+            Baglan Kadyrbay
+          </h2>
+
+          <p class="text-secondary">
+            Professional boxing coach focused on boxing fundamentals,
+            technique, conditioning, and fighter development.
+          </p>
+
+          <div class="mt-auto">
+
+            <a href="booking.html#booking-form"
+               id="book-baglan"
+               data-trainer="baglan"
+               class="btn btn-warning w-100">
+              Book with Baglan
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <article id="trainer-kanysh"
+               class="card bg-black text-white border-secondary h-100 shadow-sm">
+
+        <img src="images/gym8.png"
+             class="card-img-top trainer-img"
+             alt="Boxing trainer Kanysh Seidazym">
+
+        <div class="card-body d-flex flex-column text-center">
+
+          <h2 class="h3 text-warning fw-bold">
+            Kanysh Seidazym
+          </h2>
+
+          <p class="text-secondary">
+            Boxing coach helping athletes develop movement,
+            striking technique, defense, and physical conditioning.
+          </p>
+
+          <div class="mt-auto">
+
+            <a href="booking.html#booking-form"
+               id="book-kanysh"
+               data-trainer="kanysh"
+               class="btn btn-warning w-100">
+              Book with Kanysh
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <article id="trainer-mikhail"
+               class="card bg-black text-white border-secondary h-100 shadow-sm">
+
+        <img src="images/gym7.png"
+             class="card-img-top trainer-img"
+             alt="Boxing trainer Mikhail Shindin">
+
+        <div class="card-body d-flex flex-column text-center">
+
+          <h2 class="h3 text-warning fw-bold">
+            Mikhail Shindin
+          </h2>
+
+          <p class="text-secondary">
+            Boxing coach focused on practical ring skills,
+            technical improvement, combinations, and conditioning.
+          </p>
+
+          <div class="mt-auto">
+
+            <a href="booking.html#booking-form"
+               id="book-mikhail"
+               data-trainer="mikhail"
+               class="btn btn-warning w-100">
+              Book with Mikhail
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
   </div>
 
-  <a href="booking.html" id="quick-book-link" class="quick-book-btn">Book Now</a>
+
+  <section class="py-5">
+
+    <div class="row g-4 align-items-center">
+
+      <div class="col-12 col-md-7 text-center text-md-start">
+
+        <h2 class="fw-bold">
+          Not Sure Which Trainer to Choose?
+        </h2>
+
+        <p class="text-secondary mb-md-0">
+          Select "Any Trainer" when booking and choose the
+          training session that works best for your schedule.
+        </p>
+
+      </div>
+
+      <div class="col-12 col-md-5 text-center text-md-end">
+
+        <a href="booking.html#booking-form"
+           class="btn btn-warning btn-lg rounded-pill px-4 shadow">
+          Book Training
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </main>
 
-<footer class="main-footer">
-  <p><small>&copy; 2026 Old School Boxing Club.</small></p>
-  <p>
-    <a href="mailto:info@oldschoolboxing.kz" class="footer-link">info@oldschoolboxing.kz</a>
-    |
-    <a href="tel:+77087253626" class="footer-link">+7 708 725 36 26</a>
-  </p>
+
+<footer class="bg-black border-top border-secondary text-center py-4 mt-5">
+
+  <div class="container">
+
+    <p class="small text-secondary mb-1">
+      Turan Ave 19, BOK "Keremet", 2nd floor, Astana
+    </p>
+
+    <p class="small text-secondary mb-2">
+      &copy; 2026 Old School Boxing Club.
+    </p>
+
+    <p class="mb-0">
+
+      <a href="mailto:info@oldschoolboxing.kz"
+         class="link-secondary text-decoration-none">
+        info@oldschoolboxing.kz
+      </a>
+
+      <span class="mx-2">|</span>
+
+      <a href="tel:+77087253626"
+         class="link-secondary text-decoration-none">
+        +7 708 725 36 26
+      </a>
+
+    </p>
+
+  </div>
+
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

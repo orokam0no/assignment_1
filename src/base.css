@@ -1,60 +1,90 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
-body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    text-align: center;
+.main-header-bootstrap {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
 }
 
-.main-header {
-    background-color: black;
-    padding: 20px 10px;
-    border-bottom: 2px solid yellow;
+.navbar-brand {
+    letter-spacing: 1px;
 }
 
-.gym-title {
-    font-size: 2rem;
-    color: yellow;
-    margin-bottom: 10px;
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #ffc107;
 }
 
-.main-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+.brand-animation {
+    animation: headerFade 0.8s ease-out;
 }
 
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
+.nav-animation {
+    animation: headerFade 1s ease-out;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    color: yellow;
+@keyframes headerFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.main-footer {
-    background-color: black;
-    padding: 20px;
-    margin-top: 40px;
-    border-top: 1px solid gray;
+.nav-popup {
+    position: relative;
 }
 
-.footer-link {
-    color: gray;
-    text-decoration: none;
+.nav-popup::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%) translateY(8px);
+    background-color: #ffc107;
+    color: #000;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 1050;
 }
 
-.footer-link:hover {
-    color: yellow;
+.nav-popup:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(4px);
+}
+
+/* Prepared states for future JavaScript */
+
+.hidden {
+    display: none !important;
+}
+
+.selected {
+    border-color: #ffc107 !important;
+}
+
+.error {
+    border-color: #dc3545 !important;
+}
+
+.success {
+    border-color: #198754 !important;
+}
+
+@media (max-width: 767.98px) {
+    .nav-popup::after {
+        display: none;
+    }
 }

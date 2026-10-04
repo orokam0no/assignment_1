@@ -1,109 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sign in or create an account at Old School Boxing Club.">
-  <meta name="author" content="Arslan">
-  <title>Old School Boxing Club - Account Access</title>
+
+  <meta name="description"
+        content="Member login and registration portal for Old School Boxing Club in Astana.">
+
+  <title>Old School Boxing Club - Account</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
   <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="arslan.css">
+  <link rel="stylesheet" href="pages.css">
 </head>
 
-<body>
+<body class="bg-black text-white lh-base">
 
-<header class="main-header">
-  <h1 class="gym-title">OLD SCHOOL BOXING CLUB</h1>
+<header class="main-header-bootstrap bg-black border-bottom border-2 border-warning">
 
-  <nav class="main-nav">
-    <a href="index.html" class="nav-link">HOME</a>
-    <a href="equipment.html" class="nav-link">EQUIPMENT</a>
-    <a href="booking.html" class="nav-link">BOOKING</a>
-    <a href="prices.html" class="nav-link">PRICES</a>
-    <a href="trainers.html" class="nav-link">TRAINERS</a>
-    <a href="login.html" class="nav-link active">ACCOUNT</a>
+  <nav class="navbar navbar-expand-md navbar-dark container py-3">
+
+    <a class="navbar-brand text-warning fw-bold fs-5 brand-animation"
+       href="index.html">
+      OLD SCHOOL BOXING CLUB
+    </a>
+
+    <button class="navbar-toggler border-warning"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <div class="navbar-nav ms-auto text-center gap-md-2 nav-animation">
+
+        <a href="index.html" class="nav-link fw-semibold nav-popup"
+           data-label="Home page">HOME</a>
+
+        <a href="equipment.html" class="nav-link fw-semibold nav-popup"
+           data-label="View our equipment">EQUIPMENT</a>
+
+        <a href="booking.html" class="nav-link fw-semibold nav-popup"
+           data-label="Book a training session">BOOKING</a>
+
+        <a href="prices.html" class="nav-link fw-semibold nav-popup"
+           data-label="View membership prices">PRICES</a>
+
+        <a href="trainers.html" class="nav-link fw-semibold nav-popup"
+           data-label="Meet our trainers">TRAINERS</a>
+
+        <a href="login.html"
+           class="nav-link fw-semibold active nav-popup"
+           data-label="Member account"
+           aria-current="page">ACCOUNT</a>
+
+      </div>
+
+    </div>
+
   </nav>
+
 </header>
 
-<main class="main-content flex-center-box">
-  <section id="account-access" class="hero-section">
-    <h2>Member Portal</h2>
-    <p class="welcome-text">Log in to your athlete account or register as a new member.</p>
 
-    <div class="equipment-grid">
-      <article class="card-wrapper">
-        <form action="#" method="post" class="booking-form">
-          <fieldset>
-            <legend>Sign In</legend>
+<section class="container text-center py-5">
 
-            <div class="form-group">
-              <label for="login-email" class="form-label">Email Address:</label>
-              <input type="email" id="login-email" name="login_email" class="form-input" placeholder="name@example.com" required>
-            </div>
+  <h1 class="display-5 fw-bold mb-3">
+    Member Portal
+  </h1>
 
-            <div class="form-group">
-              <label for="login-password" class="form-label">Password:</label>
-              <input type="password" id="login-password" name="login_password" class="form-input" required>
-            </div>
+  <p class="lead text-secondary mb-0">
+    Log in to your account or create a new membership profile.
+  </p>
 
-            <div class="form-actions">
-              <input type="submit" class="form-btn btn-submit" value="Log In">
-            </div>
-          </fieldset>
+</section>
+
+
+<main class="container pb-5">
+
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-12 col-md-6 col-lg-5">
+
+      <section class="border border-warning rounded-3 p-4 h-100 shadow">
+
+        <h2 class="h3 text-warning fw-bold text-center mb-4">
+          Member Login
+        </h2>
+
+        <form id="login-form">
+
+          <div class="mb-3">
+
+            <label for="login-email"
+                   class="form-label fw-bold">
+              Email
+            </label>
+
+            <input type="email"
+                   class="form-control bg-dark text-white border-secondary"
+                   id="login-email"
+                   name="login-email"
+                   placeholder="name@example.com"
+                   required>
+
+          </div>
+
+
+          <div class="mb-4">
+
+            <label for="login-password"
+                   class="form-label fw-bold">
+              Password
+            </label>
+
+            <input type="password"
+                   class="form-control bg-dark text-white border-secondary"
+                   id="login-password"
+                   name="login-password"
+                   placeholder="Enter your password"
+                   required>
+
+          </div>
+
+
+          <div class="d-grid">
+
+            <button type="submit"
+                    id="login-submit"
+                    class="btn btn-warning btn-lg">
+              Log In
+            </button>
+
+          </div>
+
+          <p class="small text-secondary mt-3 mb-0">
+            After submitting, the login result will appear below.
+          </p>
+
         </form>
-      </article>
 
-      <article class="card-wrapper">
-        <form action="#" method="post" class="booking-form">
-          <fieldset>
-            <legend>Create Account</legend>
 
-            <div class="form-group">
-              <label for="reg-name" class="form-label">Full Name:</label>
-              <input type="text" id="reg-name" name="reg_name" class="form-input" placeholder="First and last name" required>
-            </div>
+        <div id="login-error"
+             class="alert alert-danger mt-3 hidden"
+             role="alert">
+        </div>
 
-            <div class="form-group">
-              <label for="reg-email" class="form-label">Email Address:</label>
-              <input type="email" id="reg-email" name="reg_email" class="form-input" placeholder="name@example.com" required>
-            </div>
+        <div id="login-success"
+             class="alert alert-success mt-3 hidden"
+             role="status">
+        </div>
 
-            <div class="form-group">
-              <label for="reg-password" class="form-label">Create Password:</label>
-              <input type="password" id="reg-password" name="reg_password" class="form-input" required>
-            </div>
+      </section>
 
-            <div class="form-group">
-              <label for="membership-level" class="form-label">Membership Goal:</label>
-              <select id="membership-level" name="membership_level" class="form-select">
-                <option value="beginner">Beginner / Fundamentals</option>
-                <option value="amateur">Amateur Boxer</option>
-                <option value="pro">Sparring &amp; Pro Prep</option>
-              </select>
-            </div>
-
-            <div class="form-actions">
-              <input type="submit" class="form-btn btn-submit" value="Register Account">
-              <input type="reset" class="form-btn btn-reset" value="Clear Form">
-            </div>
-          </fieldset>
-        </form>
-      </article>
     </div>
-  </section>
 
-  <a href="booking.html" id="quick-book-link" class="quick-book-btn">Book Now</a>
+
+    <div class="col-12 col-md-6 col-lg-5">
+
+      <section class="border border-secondary rounded-3 p-4 h-100 shadow-sm">
+
+        <h2 class="h3 text-warning fw-bold text-center mb-4">
+          Create Account
+        </h2>
+
+        <form id="register-form">
+
+          <div class="mb-3">
+
+            <label for="register-name"
+                   class="form-label fw-bold">
+              Full Name
+            </label>
+
+            <input type="text"
+                   class="form-control bg-dark text-white border-secondary"
+                   id="register-name"
+                   name="register-name"
+                   placeholder="Your full name"
+                   required>
+
+          </div>
+
+
+          <div class="mb-3">
+
+            <label for="register-email"
+                   class="form-label fw-bold">
+              Email
+            </label>
+
+            <input type="email"
+                   class="form-control bg-dark text-white border-secondary"
+                   id="register-email"
+                   name="register-email"
+                   placeholder="name@example.com"
+                   required>
+
+          </div>
+
+
+          <div class="mb-3">
+
+            <label for="register-password"
+                   class="form-label fw-bold">
+              Password
+            </label>
+
+            <input type="password"
+                   class="form-control bg-dark text-white border-secondary"
+                   id="register-password"
+                   name="register-password"
+                   placeholder="Create a password"
+                   required>
+
+          </div>
+
+
+          <div class="mb-4">
+
+            <label for="register-confirm-password"
+                   class="form-label fw-bold">
+              Confirm Password
+            </label>
+
+            <input type="password"
+                   class="form-control bg-dark text-white border-secondary"
+                   id="register-confirm-password"
+                   name="register-confirm-password"
+                   placeholder="Repeat your password"
+                   required>
+
+          </div>
+
+
+          <div class="d-grid">
+
+            <button type="submit"
+                    id="register-submit"
+                    class="btn btn-outline-warning btn-lg">
+              Create Account
+            </button>
+
+          </div>
+
+          <p class="small text-secondary mt-3 mb-0">
+            After submitting, the account creation result will
+            appear below.
+          </p>
+
+        </form>
+
+
+        <div id="register-error"
+             class="alert alert-danger mt-3 hidden"
+             role="alert">
+        </div>
+
+        <div id="register-success"
+             class="alert alert-success mt-3 hidden"
+             role="status">
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+
 </main>
 
-<footer class="main-footer">
-  <p><small>&copy; 2026 Old School Boxing Club.</small></p>
-  <p>
-    <a href="mailto:info@oldschoolboxing.kz" class="footer-link">info@oldschoolboxing.kz</a>
-    |
-    <a href="tel:+77087253626" class="footer-link">+7 708 725 36 26</a>
-  </p>
+
+<section class="container pb-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-12 col-md-10 col-lg-8">
+
+      <div class="border border-secondary rounded-3 p-4 text-center">
+
+        <h2 class="h4 text-warning fw-bold mb-4">
+          Member Benefits
+        </h2>
+
+        <div class="row g-3">
+
+          <div class="col-12 col-md-4">
+
+            <div class="p-3 h-100">
+
+              <h3 class="h6 text-warning fw-bold">
+                Easy Booking
+              </h3>
+
+              <p class="small text-secondary mb-0">
+                Quickly access training sessions.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="col-12 col-md-4">
+
+            <div class="p-3 h-100">
+
+              <h3 class="h6 text-warning fw-bold">
+                Training Options
+              </h3>
+
+              <p class="small text-secondary mb-0">
+                Choose group, personal, or mini-group training.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="col-12 col-md-4">
+
+            <div class="p-3 h-100">
+
+              <h3 class="h6 text-warning fw-bold">
+                Membership
+              </h3>
+
+              <p class="small text-secondary mb-0">
+                Find the membership option that suits you.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="container text-center mb-5">
+
+  <a href="booking.html#booking-form"
+     class="btn btn-warning btn-lg rounded-pill shadow px-4">
+    Book Training
+  </a>
+
+</section>
+
+
+<footer class="bg-black border-top border-secondary text-center py-4 mt-5">
+
+  <div class="container">
+
+    <p class="small text-secondary mb-1">
+      Turan Ave 19, BOK "Keremet", 2nd floor, Astana
+    </p>
+
+    <p class="small text-secondary mb-2">
+      &copy; 2026 Old School Boxing Club.
+    </p>
+
+    <p class="mb-0">
+
+      <a href="mailto:info@oldschoolboxing.kz"
+         class="link-secondary text-decoration-none">
+        info@oldschoolboxing.kz
+      </a>
+
+      <span class="mx-2">|</span>
+
+      <a href="tel:+77087253626"
+         class="link-secondary text-decoration-none">
+        +7 708 725 36 26
+      </a>
+
+    </p>
+
+  </div>
+
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

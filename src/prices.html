@@ -1,149 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Membership and training price list for Old School Boxing Club in Astana.">
-  <meta name="author" content="Arslan">
+
+  <meta name="description"
+        content="Membership and boxing training prices at Old School Boxing Club in Astana.">
+
   <title>Old School Boxing Club - Prices</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
   <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="arslan.css">
+  <link rel="stylesheet" href="pages.css">
 </head>
 
-<body>
+<body class="bg-black text-white lh-base">
 
-<header class="main-header">
-  <h1 class="gym-title">OLD SCHOOL BOXING CLUB</h1>
+<header class="main-header-bootstrap bg-black border-bottom border-2 border-warning">
 
-  <nav class="main-nav">
-    <a href="index.html" class="nav-link">HOME</a>
-    <a href="equipment.html" class="nav-link">EQUIPMENT</a>
-    <a href="booking.html" class="nav-link">BOOKING</a>
-    <a href="prices.html" class="nav-link active">PRICES</a>
-    <a href="trainers.html" class="nav-link">TRAINERS</a>
-    <a href="login.html" class="nav-link">ACCOUNT</a>
+  <nav class="navbar navbar-expand-md navbar-dark container py-3">
+
+    <a class="navbar-brand text-warning fw-bold fs-5 brand-animation"
+       href="index.html">
+      OLD SCHOOL BOXING CLUB
+    </a>
+
+    <button class="navbar-toggler border-warning"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <div class="navbar-nav ms-auto text-center gap-md-2 nav-animation">
+
+        <a href="index.html" class="nav-link fw-semibold nav-popup"
+           data-label="Home page">HOME</a>
+
+        <a href="equipment.html" class="nav-link fw-semibold nav-popup"
+           data-label="View our equipment">EQUIPMENT</a>
+
+        <a href="booking.html" class="nav-link fw-semibold nav-popup"
+           data-label="Book a training session">BOOKING</a>
+
+        <a href="prices.html"
+           class="nav-link fw-semibold active nav-popup"
+           data-label="View membership prices"
+           aria-current="page">PRICES</a>
+
+        <a href="trainers.html" class="nav-link fw-semibold nav-popup"
+           data-label="Meet our trainers">TRAINERS</a>
+
+        <a href="login.html" class="nav-link fw-semibold nav-popup"
+           data-label="Member account">ACCOUNT</a>
+
+      </div>
+
+    </div>
+
   </nav>
+
 </header>
 
-<main class="main-content">
-  <section id="price-list" class="hero-section">
-    <h2>Official Price List</h2>
-    <p class="welcome-text">Flexible membership packages, individual personal sessions, and mini-group options.</p>
 
-    <article class="card-wrapper price-card-table">
-      <h3>Monthly &amp; Group Options</h3>
-      <table class="center-table price-table">
-        <caption>Group &amp; Personal Training Rates</caption>
-        <thead>
-        <tr>
-          <th scope="col">Category</th>
-          <th scope="col">Option / Type</th>
-          <th scope="col">Price (KZT)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row" rowspan="3">Group Training</th>
-          <td>Single Session</td>
-          <td><span class="price-value">3 500</span></td>
-        </tr>
-        <tr>
-          <td>Standard Pass</td>
-          <td><span class="price-value">25 000</span></td>
-        </tr>
-        <tr>
-          <td>Unlimited Pass</td>
-          <td><span class="price-value">30 000</span></td>
-        </tr>
-        <tr>
-          <th scope="row" rowspan="3">Personal Training</th>
-          <td>Single Session</td>
-          <td><span class="price-value">8 000</span></td>
-        </tr>
-        <tr>
-          <td>8 Sessions Package</td>
-          <td><span class="price-value">60 000</span></td>
-        </tr>
-        <tr>
-          <td>10 Sessions Package</td>
-          <td><span class="price-value">70 000</span></td>
-        </tr>
-        <tr>
-          <th scope="row" rowspan="2">Mini-Group &amp; Split</th>
-          <td>Split (2 Persons)</td>
-          <td><span class="price-value">60 000</span></td>
-        </tr>
-        <tr>
-          <td>Mini-Group (Up to 5 Persons)</td>
-          <td><span class="price-value">50 000</span></td>
-        </tr>
-        </tbody>
-      </table>
-    </article>
+<section class="container text-center py-5">
 
-    <article class="card-wrapper price-card-table">
-      <h3>Long-Term Memberships</h3>
-      <table class="center-table price-table">
-        <caption>3-Month, 6-Month, and Annual Pass Options</caption>
-        <thead>
-        <tr>
-          <th scope="col">Duration</th>
-          <th scope="col">Tier</th>
-          <th scope="col">Price (KZT)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row" rowspan="2">3 Months (3 Месяца)</th>
-          <td>Standard</td>
-          <td><span class="price-value">63 500</span></td>
-        </tr>
-        <tr>
-          <td>Unlimited</td>
-          <td><span class="price-value">76 500</span></td>
-        </tr>
-        <tr>
-          <th scope="row" rowspan="2">6 Months (6 Месяцев)</th>
-          <td>Standard</td>
-          <td><span class="price-value">120 000</span></td>
-        </tr>
-        <tr>
-          <td>Unlimited</td>
-          <td><span class="price-value">144 000</span></td>
-        </tr>
-        <tr>
-          <th scope="row" rowspan="2">1 Year (Годовой)</th>
-          <td>Standard</td>
-          <td><span class="price-value">225 000</span></td>
-        </tr>
-        <tr>
-          <td>Unlimited</td>
-          <td><span class="price-value">280 000</span></td>
-        </tr>
-        </tbody>
-      </table>
-    </article>
+  <h1 class="display-5 fw-bold mb-3">
+    Membership Prices
+  </h1>
 
-    <section id="location-info" class="info-block">
-      <h3>Gym Location &amp; Contacts</h3>
-      <p><strong>Address:</strong> Turan Avenue 19, BOK "Keremet", 2nd floor, Astana</p>
-      <p><strong>Phone:</strong> <a href="tel:+77087253626" class="text-link">+7 (708) 725-36-26</a></p>
-      <p><strong>Instagram:</strong> @old_school_boxing_club</p>
-    </section>
+  <p class="lead text-secondary mb-0">
+    Choose the training option that fits your goals and schedule.
+  </p>
+
+</section>
+
+
+<main class="container pb-5">
+
+  <div class="row g-4">
+
+    <div class="col-12 col-lg-6">
+
+      <section class="border border-secondary rounded-3 p-3 p-md-4 h-100 shadow-sm">
+
+        <h2 class="h3 text-warning fw-bold text-center mb-4">
+          Group Training
+        </h2>
+
+        <div class="table-responsive">
+
+          <table class="table table-dark table-bordered table-hover align-middle text-center mb-0">
+
+            <caption class="caption-top text-secondary">
+              Group boxing training options
+            </caption>
+
+            <thead class="table-warning">
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+              <td>Single Training</td>
+              <td>3,500 KZT</td>
+            </tr>
+            <tr>
+              <td>Standard Pass</td>
+              <td>25,000 KZT</td>
+            </tr>
+            <tr>
+              <td>Unlimited</td>
+              <td>30,000 KZT</td>
+            </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <a id="choose-group-training"
+           data-session="group"
+           href="booking.html#booking-form"
+           class="btn btn-outline-warning w-100 mt-3">
+          Choose Group Training
+        </a>
+
+      </section>
+
+    </div>
+
+
+    <div class="col-12 col-lg-6">
+
+      <section class="border border-secondary rounded-3 p-3 p-md-4 h-100 shadow-sm">
+
+        <h2 class="h3 text-warning fw-bold text-center mb-4">
+          Personal Training
+        </h2>
+
+        <div class="table-responsive">
+
+          <table class="table table-dark table-bordered table-hover align-middle text-center mb-0">
+
+            <caption class="caption-top text-secondary">
+              Individual training with a coach
+            </caption>
+
+            <thead class="table-warning">
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+              <td>Single Training</td>
+              <td>8,000 KZT</td>
+            </tr>
+            <tr>
+              <td>8 Sessions</td>
+              <td>60,000 KZT</td>
+            </tr>
+            <tr>
+              <td>10 Sessions</td>
+              <td>70,000 KZT</td>
+            </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <a id="choose-personal-training"
+           data-session="personal"
+           href="booking.html#booking-form"
+           class="btn btn-outline-warning w-100 mt-3">
+          Choose Personal Training
+        </a>
+
+      </section>
+
+    </div>
+
+
+    <div class="col-12 col-lg-6">
+
+      <section class="border border-secondary rounded-3 p-3 p-md-4 h-100 shadow-sm">
+
+        <h2 class="h3 text-warning fw-bold text-center mb-4">
+          Mini-Group Training
+        </h2>
+
+        <div class="table-responsive">
+
+          <table class="table table-dark table-bordered table-hover align-middle text-center mb-0">
+
+            <caption class="caption-top text-secondary">
+              Small group training options
+            </caption>
+
+            <thead class="table-warning">
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+              <td>Split</td>
+              <td>60,000 KZT</td>
+            </tr>
+            <tr>
+              <td>Mini-Group</td>
+              <td>50,000 KZT</td>
+            </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <a id="choose-minigroup-training"
+           data-session="minigroup"
+           href="booking.html#booking-form"
+           class="btn btn-outline-warning w-100 mt-3">
+          Choose Mini-Group Training
+        </a>
+
+      </section>
+
+    </div>
+
+
+    <div class="col-12 col-lg-6">
+
+      <section class="border border-warning rounded-3 p-3 p-md-4 h-100 shadow">
+
+        <h2 class="h3 text-warning fw-bold text-center mb-4">
+          Long-Term Memberships
+        </h2>
+
+        <div class="table-responsive">
+
+          <table class="table table-dark table-bordered table-hover align-middle text-center mb-0">
+
+            <caption class="caption-top text-secondary">
+              Long-term membership options
+            </caption>
+
+            <thead class="table-warning">
+            <tr>
+              <th scope="col">Period</th>
+              <th scope="col">Type</th>
+              <th scope="col">Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+              <td>3 Months</td>
+              <td>Standard</td>
+              <td>63,500 KZT</td>
+            </tr>
+            <tr>
+              <td>3 Months</td>
+              <td>Unlimited</td>
+              <td>76,500 KZT</td>
+            </tr>
+            <tr>
+              <td>6 Months</td>
+              <td>Standard</td>
+              <td>120,000 KZT</td>
+            </tr>
+            <tr>
+              <td>6 Months</td>
+              <td>Unlimited</td>
+              <td>144,000 KZT</td>
+            </tr>
+            <tr>
+              <td>1 Year</td>
+              <td>Standard</td>
+              <td>225,000 KZT</td>
+            </tr>
+            <tr>
+              <td>1 Year</td>
+              <td>Unlimited</td>
+              <td>280,000 KZT</td>
+            </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <p class="small text-secondary text-center mt-3 mb-0">
+          Long-term memberships can be arranged directly at the club.
+          Contact us or book your first training session to get started.
+        </p>
+
+      </section>
+
+    </div>
+
+  </div>
+
+
+  <section class="mt-5">
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-md-10 col-lg-8">
+
+        <div class="border border-secondary rounded-3 p-4 text-center shadow-sm">
+
+          <h2 class="h3 fw-bold text-warning mb-4">
+            Location
+          </h2>
+
+          <p class="mb-2">
+            Turan Ave 19, BOK "Keremet", 2nd floor, Astana
+          </p>
+
+          <p class="mb-4">
+
+            <a href="tel:+77087253626"
+               class="link-warning text-decoration-none">
+              +7 (708) 725-36-26
+            </a>
+
+          </p>
+
+          <a href="booking.html#booking-form"
+             class="btn btn-warning btn-lg">
+            Book Training
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </section>
 
-  <a href="booking.html" id="quick-book-link" class="quick-book-btn">Book Now</a>
 </main>
 
-<footer class="main-footer">
-  <p><small>&copy; 2026 Old School Boxing Club.</small></p>
-  <p>
-    <a href="mailto:info@oldschoolboxing.kz" class="footer-link">info@oldschoolboxing.kz</a>
-    |
-    <a href="tel:+77087253626" class="footer-link">+7 708 725 36 26</a>
-  </p>
+
+<footer class="bg-black border-top border-secondary text-center py-4 mt-5">
+
+  <div class="container">
+
+    <p class="small text-secondary mb-1">
+      Turan Ave 19, BOK "Keremet", 2nd floor, Astana
+    </p>
+
+    <p class="small text-secondary mb-2">
+      &copy; 2026 Old School Boxing Club.
+    </p>
+
+    <p class="mb-0">
+
+      <a href="mailto:info@oldschoolboxing.kz"
+         class="link-secondary text-decoration-none">
+        info@oldschoolboxing.kz
+      </a>
+
+      <span class="mx-2">|</span>
+
+      <a href="tel:+77087253626"
+         class="link-secondary text-decoration-none">
+        +7 708 725 36 26
+      </a>
+
+    </p>
+
+  </div>
+
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

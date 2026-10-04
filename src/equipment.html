@@ -1,88 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional boxing equipment and ring specifications at Old School Boxing Club in Astana.">
+
+  <meta name="description"
+        content="Professional boxing equipment at Old School Boxing Club in Astana.">
+
   <title>Old School Boxing Club - Equipment</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
   <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="assylkhan.css">
+  <link rel="stylesheet" href="pages.css">
 </head>
 
-<body>
+<body class="bg-black text-white lh-base">
 
-<header class="main-header">
-  <h1 class="gym-title">OLD SCHOOL BOXING CLUB</h1>
+<header class="main-header-bootstrap bg-black border-bottom border-2 border-warning">
 
-  <nav class="main-nav">
-    <a href="index.html" class="nav-link">HOME</a>
-    <a href="equipment.html" class="nav-link active">EQUIPMENT</a>
-    <a href="booking.html" class="nav-link">BOOKING</a>
-    <a href="prices.html" class="nav-link">PRICES</a>
-    <a href="trainers.html" class="nav-link">TRAINERS</a>
-    <a href="login.html" class="nav-link">ACCOUNT</a>
+  <nav class="navbar navbar-expand-md navbar-dark container py-3">
+
+    <a class="navbar-brand text-warning fw-bold fs-5 brand-animation"
+       href="index.html">
+      OLD SCHOOL BOXING CLUB
+    </a>
+
+    <button class="navbar-toggler border-warning"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <div class="navbar-nav ms-auto text-center gap-md-2 nav-animation">
+
+        <a href="index.html"
+           class="nav-link fw-semibold nav-popup"
+           data-label="Home page">HOME</a>
+
+        <a href="equipment.html"
+           class="nav-link fw-semibold active nav-popup"
+           data-label="View our equipment"
+           aria-current="page">EQUIPMENT</a>
+
+        <a href="booking.html"
+           class="nav-link fw-semibold nav-popup"
+           data-label="Book a training session">BOOKING</a>
+
+        <a href="prices.html"
+           class="nav-link fw-semibold nav-popup"
+           data-label="View membership prices">PRICES</a>
+
+        <a href="trainers.html"
+           class="nav-link fw-semibold nav-popup"
+           data-label="Meet our trainers">TRAINERS</a>
+
+        <a href="login.html"
+           class="nav-link fw-semibold nav-popup"
+           data-label="Member account">ACCOUNT</a>
+
+      </div>
+
+    </div>
+
   </nav>
+
 </header>
 
-<main class="main-content">
-  <section id="equipment-overview" class="hero-section">
-    <h2>Training Zone &amp; Equipment</h2>
-    <p class="welcome-text">
-      Our gym is fully equipped for technical training, heavy striking drills, conditioning, and competitive sparring.
+
+<section class="container text-center py-5">
+
+  <h1 class="display-5 fw-bold mb-3">
+    Training Zone &amp; Equipment
+  </h1>
+
+  <p class="lead text-secondary mb-0">
+    Our gym is fully equipped for technical training,
+    heavy striking drills, conditioning, and competitive sparring.
+  </p>
+
+</section>
+
+
+<main id="equipment-list" class="container pb-5">
+
+  <div class="text-center mb-4">
+
+        <span class="badge text-bg-warning fs-6 px-3 py-2">
+            Heavy Zone
+        </span>
+
+  </div>
+
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-12 col-md-6 col-lg-3">
+
+      <article id="heavy-bags"
+               class="card bg-black text-white border-secondary h-100 shadow-sm">
+
+        <div class="card-body d-flex flex-column">
+
+          <h2 class="h4 fw-bold text-center">
+            Heavy Leather Bags
+          </h2>
+
+          <img src="images/gym6.jpg"
+               alt="Row of heavy leather punching bags"
+               class="img-fluid rounded equipment-img my-3">
+
+          <p class="small text-secondary text-center">
+            Classic heavy leather bags for power combinations
+          </p>
+
+          <p class="text-secondary text-center mt-auto">
+            Heavy leather bags designed to withstand high-impact
+            strikes and develop combination power.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="col-12 col-md-6 col-lg-3">
+
+      <article id="speed-bags"
+               class="card bg-black text-white border-secondary h-100 shadow-sm">
+
+        <div class="card-body d-flex flex-column">
+
+          <h2 class="h4 fw-bold text-center">
+            Teardrop &amp; Speed Bags
+          </h2>
+
+          <img src="images/gym5.jpg"
+               alt="Speed bags and specialty teardrop bags"
+               class="img-fluid rounded equipment-img my-3">
+
+          <p class="small text-secondary text-center">
+            Specialty bags for rhythm and head movement
+          </p>
+
+          <p class="text-secondary text-center mt-auto">
+            Speed bags and teardrop bags help develop
+            coordination, timing, rhythm, and defense.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="col-12 col-md-6 col-lg-3">
+
+      <article id="boxing-ring"
+               class="card bg-black text-white border-secondary h-100 shadow-sm">
+
+        <div class="card-body d-flex flex-column">
+
+          <h2 class="h4 fw-bold text-center">
+            Regulation Boxing Ring
+          </h2>
+
+          <img src="images/gym4.jpg"
+               alt="Full view of the boxing ring"
+               class="img-fluid rounded equipment-img my-3">
+
+          <p class="small text-secondary text-center">
+            Full-size competition ring
+          </p>
+
+          <p class="text-secondary text-center mt-auto">
+            A full-size ring provides realistic conditions
+            for sparring, movement, and footwork drills.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="col-12 col-md-6 col-lg-3">
+
+      <article id="conditioning-zone"
+               class="card bg-black text-white border-secondary h-100 shadow-sm">
+
+        <div class="card-body d-flex flex-column">
+
+          <h2 class="h4 fw-bold text-center">
+            Conditioning &amp; Free Weights
+          </h2>
+
+          <img src="images/gym3.jpg"
+               alt="Functional training and conditioning zone"
+               class="img-fluid rounded equipment-img my-3">
+
+          <p class="small text-secondary text-center">
+            Functional training and conditioning equipment
+          </p>
+
+          <p class="text-secondary text-center mt-auto">
+            Jump ropes, medicine balls, weights, and conditioning
+            equipment support stamina and explosive strength.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+
+  <section class="text-center mt-5">
+
+    <h2 class="fw-bold mb-3">
+      Ready to Train?
+    </h2>
+
+    <p class="text-secondary">
+      Check our training prices or book your first session.
     </p>
 
-    <div class="equipment-grid">
-      <article class="price-card card-wrapper featured-item">
-        <span class="promo-badge">Heavy Zone</span>
-        <h3>Heavy Leather Bags</h3>
-        <figure class="media-container">
-          <img src="images/gym6.jpg" alt="Row of heavy leather punching bags" width="400" class="feature-img">
-          <figcaption class="image-caption"><small>Classic heavy leather bags for power combinations</small></figcaption>
-        </figure>
-        <p>Heavy leather bags designed to withstand high-impact strikes and develop combination power.</p>
-      </article>
+    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
 
-      <article class="price-card card-wrapper">
-        <h3>Teardrop &amp; Speed Bags</h3>
-        <figure class="media-container">
-          <img src="images/gym5.jpg" alt="Speed bags and specialty teardrop bags" width="400" class="feature-img">
-          <figcaption class="image-caption"><small>Specialty bags for rhythm and head movement</small></figcaption>
-        </figure>
-        <p>Speed bags and teardrop bags to train hand-eye coordination, timing, and upper body defense.</p>
-      </article>
+      <a href="booking.html#booking-form"
+         class="btn btn-warning btn-lg">
+        Book Training
+      </a>
 
-      <article class="price-card card-wrapper">
-        <h3>Regulation Boxing Ring</h3>
-        <figure class="media-container">
-          <img src="images/gym4.jpg" alt="Full view of the official regulation boxing ring" width="400" class="feature-img">
-          <figcaption class="image-caption"><small>Full-size competition ring with canvas padding</small></figcaption>
-        </figure>
-        <p>Full-size regulation ring providing realistic conditions for technical sparring and footwork drills.</p>
-      </article>
+      <a href="prices.html"
+         class="btn btn-outline-warning btn-lg">
+        View Prices
+      </a>
 
-      <article class="price-card card-wrapper">
-        <h3>Conditioning &amp; Free Weights Area</h3>
-        <figure class="media-container">
-          <img src="images/gym3.jpg" alt="Functional training and conditioning zone" width="400" class="feature-img">
-          <figcaption class="image-caption"><small>Functional training gear and conditioning tools</small></figcaption>
-        </figure>
-        <p>Jump ropes, medicine balls, and conditioning gear to support stamina and explosive strength.</p>
-      </article>
     </div>
+
   </section>
 
-  <a href="booking.html" id="quick-book-link" class="quick-book-btn">Book Now</a>
 </main>
 
-<footer class="main-footer">
-  <p><small>&copy; 2026 Old School Boxing Club.</small></p>
-  <p>
-    <a href="mailto:info@oldschoolboxing.kz" class="footer-link">info@oldschoolboxing.kz</a>
-    |
-    <a href="tel:+77087253626" class="footer-link">+7 708 725 36 26</a>
-  </p>
+
+<footer class="bg-black border-top border-secondary text-center py-4 mt-5">
+
+  <div class="container">
+
+    <p class="small text-secondary mb-1">
+      Turan Ave 19, BOK "Keremet", 2nd floor, Astana
+    </p>
+
+    <p class="small text-secondary mb-2">
+      &copy; 2026 Old School Boxing Club.
+    </p>
+
+    <p class="mb-0">
+
+      <a href="mailto:info@oldschoolboxing.kz"
+         class="link-secondary text-decoration-none">
+        info@oldschoolboxing.kz
+      </a>
+
+      <span class="mx-2">|</span>
+
+      <a href="tel:+77087253626"
+         class="link-secondary text-decoration-none">
+        +7 708 725 36 26
+      </a>
+
+    </p>
+
+  </div>
+
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
