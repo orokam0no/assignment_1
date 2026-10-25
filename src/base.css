@@ -65,7 +65,6 @@
     transform: translateX(-50%) translateY(4px);
 }
 
-/* Prepared states for future JavaScript */
 
 .hidden {
     display: none !important;
