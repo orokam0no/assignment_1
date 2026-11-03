@@ -1,417 +1,296 @@
 'use strict';
 
-const {
-    createElement
-} = window.BoxingClub;
+$(function () {
+    const {
+        createElement
+    } = window.BoxingClub;
 
-const trainers = [
-    {
-        id: 'baglan',
-        name: 'Baglan Kadyrbay',
-        specialty: 'Fundamentals',
-        experience: 8,
-        available: true,
-        rating: 5,
-        image: 'images/gym9.png'
-    },
+    const trainers = [
+        {
+            id: 'baglan',
+            name: 'Baglan Kadyrbay',
+            specialty: 'Fundamentals',
+            experience: 8,
+            available: true,
+            rating: 5,
+            image: 'images/gym9.png'
+        },
+        {
+            id: 'kanysh',
+            name: 'Kanysh Seidazym',
+            specialty: 'Technique',
+            experience: 6,
+            available: true,
+            rating: 5,
+            image: 'images/gym8.png'
+        },
+        {
+            id: 'mikhail',
+            name: 'Mikhail Shindin',
+            specialty: 'Ring Skills',
+            experience: 7,
+            available: true,
+            rating: 4,
+            image: 'images/gym7.png'
+        },
+        {
+            id: 'baglan-conditioning',
+            name: 'Baglan — Conditioning',
+            specialty: 'Conditioning',
+            experience: 8,
+            available: false,
+            rating: 5,
+            image: 'images/gym9.png'
+        },
+        {
+            id: 'kanysh-defense',
+            name: 'Kanysh — Defense Focus',
+            specialty: 'Defense',
+            experience: 6,
+            available: true,
+            rating: 5,
+            image: 'images/gym8.png'
+        },
+        {
+            id: 'mikhail-combinations',
+            name: 'Mikhail — Combinations',
+            specialty: 'Combinations',
+            experience: 7,
+            available: true,
+            rating: 4,
+            image: 'images/gym7.png'
+        }
+    ];
 
-    {
-        id: 'kanysh',
-        name: 'Kanysh Seidazym',
-        specialty: 'Technique',
-        experience: 6,
-        available: true,
-        rating: 5,
-        image: 'images/gym8.png'
-    },
+    const $main = $('#trainers-list');
+    const $originalRow = $main.find('.row.g-4:first');
 
-    {
-        id: 'mikhail',
-        name: 'Mikhail Shindin',
-        specialty: 'Ring Skills',
-        experience: 7,
-        available: true,
-        rating: 4,
-        image: 'images/gym7.png'
-    },
+    function baseTrainerId(id) {
+        if (id.startsWith('baglan')) {
+            return 'baglan';
+        }
 
-    {
-        id: 'baglan-conditioning',
-        name: 'Baglan — Conditioning',
-        specialty: 'Conditioning',
-        experience: 8,
-        available: false,
-        rating: 5,
-        image: 'images/gym9.png'
-    },
+        if (id.startsWith('kanysh')) {
+            return 'kanysh';
+        }
 
-    {
-        id: 'kanysh-defense',
-        name: 'Kanysh — Defense Focus',
-        specialty: 'Defense',
-        experience: 6,
-        available: true,
-        rating: 5,
-        image: 'images/gym8.png'
-    },
-
-    {
-        id: 'mikhail-combinations',
-        name: 'Mikhail — Combinations',
-        specialty: 'Combinations',
-        experience: 7,
-        available: true,
-        rating: 4,
-        image: 'images/gym7.png'
-    }
-];
-
-const main =
-    document.querySelector(
-        '#trainers-list'
-    );
-
-const originalRow =
-    main?.querySelector('.row.g-4');
-
-function baseTrainerId(id) {
-    if (
-        id.startsWith('baglan')
-    ) {
-        return 'baglan';
+        return 'mikhail';
     }
 
-    if (
-        id.startsWith('kanysh')
-    ) {
-        return 'kanysh';
-    }
-
-    return 'mikhail';
-}
-
-function card(trainer) {
-    const col =
-        createElement(
+    function trainerCard(trainer) {
+        const $col = createElement(
             'div',
             'col-12 col-md-6 col-lg-4'
         );
 
-    const article =
-        createElement(
+        const $article = createElement(
             'article',
             'card bg-black text-white border-secondary h-100 shadow-sm'
         );
 
-    const img =
-        document.createElement('img');
+        const $img = $('<img>', {
+            src: trainer.image,
+            alt: `Boxing trainer ${trainer.name}`,
+            class: 'card-img-top trainer-img'
+        });
 
-    img.src =
-        trainer.image;
-
-    img.alt =
-        `Boxing trainer ${trainer.name}`;
-
-    img.className =
-        'card-img-top trainer-img';
-
-    const body =
-        createElement(
+        const $body = createElement(
             'div',
             'card-body d-flex flex-column text-center'
         );
 
-    const button =
-        createElement(
-            'a',
-
-            `btn ${
+        const $button = $('<a>', {
+            class:
+                `btn ${
+                    trainer.available
+                        ? 'btn-warning'
+                        : 'btn-outline-secondary'
+                } w-100 mt-auto`,
+            text:
                 trainer.available
-                    ? 'btn-warning'
-                    : 'btn-outline-secondary'
-            } w-100 mt-auto`,
+                    ? 'Book This Trainer'
+                    : 'Unavailable'
+        });
 
-            trainer.available
-                ? 'Book This Trainer'
-                : 'Unavailable'
+        if (trainer.available) {
+            $button.attr(
+                'href',
+                `booking.html?trainer=${baseTrainerId(trainer.id)}#booking-form`
+            );
+        } else {
+            $button
+                .attr('href', '#')
+                .attr('aria-disabled', 'true')
+                .addClass('trainer-unavailable');
+        }
+
+        $body.append(
+            createElement(
+                'h2',
+                'h4 text-warning fw-bold',
+                trainer.name
+            ),
+            createElement(
+                'p',
+                'text-secondary',
+                `${trainer.specialty} • ${trainer.experience} years • Rating ${trainer.rating}/5`
+            ),
+            createElement(
+                'p',
+                'small mb-3',
+                trainer.available
+                    ? 'Available for demo booking'
+                    : 'Temporarily unavailable'
+            ),
+            $button
         );
 
-    if (trainer.available) {
-        button.href =
-            `booking.html?trainer=${baseTrainerId(trainer.id)}#booking-form`;
-    } else {
-        button.href = '#';
-
-        button.setAttribute(
-            'aria-disabled',
-            'true'
+        $article.append(
+            $img,
+            $body
         );
 
-        button.addEventListener(
-            'click',
-            (event) => {
-                event.preventDefault();
-            }
-        );
+        $col.append($article);
+
+        return $col;
     }
 
-    body.append(
-        createElement(
-            'h2',
-            'h4 text-warning fw-bold',
-            trainer.name
-        ),
+    if (!$main.length || !$originalRow.length) {
+        return;
+    }
 
-        createElement(
-            'p',
-            'text-secondary',
-            `${trainer.specialty} • ${trainer.experience} years • Rating ${trainer.rating}/5`
-        ),
+    $originalRow.remove();
 
-        createElement(
-            'p',
-            'small mb-3',
-
-            trainer.available
-                ? 'Available for demo booking'
-                : 'Temporarily unavailable'
-        ),
-
-        button
+    const $controls = createElement(
+        'section',
+        'border border-secondary rounded-3 p-3 mb-4'
     );
 
-    article.append(
-        img,
-        body
+    const $row = createElement(
+        'div',
+        'row g-3'
     );
 
-    col.append(article);
+    const $search = $('<input>', {
+        type: 'search',
+        class: 'form-control bg-dark text-white border-secondary',
+        placeholder: 'Search trainer or specialty'
+    });
 
-    return col;
-}
+    const $specialty = $('<select>', {
+        class: 'form-select bg-dark text-white border-secondary'
+    });
 
-if (main && originalRow) {
-    originalRow.remove();
+    [
+        ['all', 'All specialties'],
+        ['Fundamentals', 'Fundamentals'],
+        ['Technique', 'Technique'],
+        ['Ring Skills', 'Ring Skills'],
+        ['Conditioning', 'Conditioning'],
+        ['Defense', 'Defense'],
+        ['Combinations', 'Combinations']
+    ].forEach(([value, label]) => {
+        $('<option>', {
+            value,
+            text: label
+        }).appendTo($specialty);
+    });
 
-    const controls =
-        createElement(
-            'section',
-            'border border-secondary rounded-3 p-3 mb-4'
-        );
+    const $sort = $('<select>', {
+        class: 'form-select bg-dark text-white border-secondary'
+    });
 
-    const row =
-        createElement(
+    [
+        ['default', 'Default order'],
+        ['rating', 'Highest rating'],
+        ['experience', 'Most experience']
+    ].forEach(([value, label]) => {
+        $('<option>', {
+            value,
+            text: label
+        }).appendTo($sort);
+    });
+
+    [
+        $search,
+        $specialty,
+        $sort
+    ].forEach(($control) => {
+        const $col = createElement(
             'div',
-            'row g-3'
+            'col-12 col-md-4'
         );
 
-    const search =
-        createElement(
-            'input',
-            'form-control bg-dark text-white border-secondary'
-        );
+        $col.append($control);
+        $row.append($col);
+    });
 
-    search.type = 'search';
-
-    search.placeholder =
-        'Search trainer or specialty';
-
-    const specialty =
-        createElement(
-            'select',
-            'form-select bg-dark text-white border-secondary'
-        );
-
-    [
-        'All specialties',
-        'Fundamentals',
-        'Technique',
-        'Ring Skills',
-        'Conditioning',
-        'Defense',
-        'Combinations'
-    ].forEach(
-        (label, index) => {
-            const option =
-                createElement(
-                    'option',
-                    '',
-                    label
-                );
-
-            option.value =
-                index === 0
-                    ? 'all'
-                    : label;
-
-            specialty.append(
-                option
-            );
-        }
+    const $count = createElement(
+        'p',
+        'small text-secondary mt-3 mb-2'
     );
 
-    const sort =
-        createElement(
-            'select',
-            'form-select bg-dark text-white border-secondary'
-        );
+    const $reset = $('<button>', {
+        type: 'button',
+        class: 'btn btn-outline-warning',
+        text: 'Reset filters'
+    });
 
-    [
-        [
-            'default',
-            'Default order'
-        ],
-
-        [
-            'rating',
-            'Highest rating'
-        ],
-
-        [
-            'experience',
-            'Most experience'
-        ]
-    ].forEach(
-        ([value, label]) => {
-            const option =
-                createElement(
-                    'option',
-                    '',
-                    label
-                );
-
-            option.value =
-                value;
-
-            sort.append(
-                option
-            );
-        }
+    $controls.append(
+        $row,
+        $count,
+        $reset
     );
 
-    [
-        search,
-        specialty,
-        sort
-    ].forEach(
-        (control) => {
-            const col =
-                createElement(
-                    'div',
-                    'col-12 col-md-4'
-                );
-
-            col.append(control);
-            row.append(col);
-        }
+    const $list = createElement(
+        'div',
+        'row g-4 justify-content-center'
     );
 
-    const count =
-        createElement(
-            'p',
-            'small text-secondary mt-3 mb-2'
-        );
-
-    const reset =
-        createElement(
-            'button',
-            'btn btn-outline-warning',
-            'Reset filters'
-        );
-
-    reset.type = 'button';
-
-    controls.append(
-        row,
-        count,
-        reset
-    );
-
-    const list =
-        createElement(
-            'div',
-            'row g-4 justify-content-center'
-        );
-
-    main.prepend(controls);
-
-    controls.insertAdjacentElement(
-        'afterend',
-        list
-    );
+    $main.prepend($controls);
+    $controls.after($list);
 
     function render() {
-        const query =
-            search.value
-                .trim()
-                .toLowerCase();
+        const query = $.trim($search.val()).toLowerCase();
 
-        let result =
-            trainers.filter(
-                (trainer) => {
-                    const matchesText =
-                        trainer.name
-                            .toLowerCase()
-                            .includes(query) ||
+        let result = trainers.filter((trainer) => {
+            const matchesText =
+                trainer.name.toLowerCase().includes(query) ||
+                trainer.specialty.toLowerCase().includes(query);
 
-                        trainer.specialty
-                            .toLowerCase()
-                            .includes(query);
+            const matchesSpecialty =
+                $specialty.val() === 'all' ||
+                trainer.specialty === $specialty.val();
 
-                    const matchesSpecialty =
-                        specialty.value ===
-                        'all' ||
+            return matchesText && matchesSpecialty;
+        });
 
-                        trainer.specialty ===
-                        specialty.value;
-
-                    return (
-                        matchesText &&
-                        matchesSpecialty
-                    );
-                }
+        if ($sort.val() === 'rating') {
+            result = [...result].sort(
+                (a, b) => b.rating - a.rating
             );
-
-        if (
-            sort.value === 'rating'
-        ) {
-            result =
-                [...result].sort(
-                    (a, b) =>
-                        b.rating -
-                        a.rating
-                );
         }
 
-        if (
-            sort.value ===
-            'experience'
-        ) {
-            result =
-                [...result].sort(
-                    (a, b) =>
-                        b.experience -
-                        a.experience
-                );
+        if ($sort.val() === 'experience') {
+            result = [...result].sort(
+                (a, b) => b.experience - a.experience
+            );
         }
 
-        list.replaceChildren();
+        $list.empty();
 
-        result.forEach(
-            (trainer) => {
-                list.append(
-                    card(trainer)
-                );
-            }
+        $.each(result, function (_, trainer) {
+            $list.append(
+                trainerCard(trainer)
+            );
+        });
+
+        $count.text(
+            `${result.length} of ${trainers.length} trainer profiles`
         );
 
-        count.textContent =
-            `${result.length} of ${trainers.length} trainer profiles`;
-
-        if (
-            result.length === 0
-        ) {
-            list.append(
+        if (result.length === 0) {
+            $list.append(
                 createElement(
                     'p',
                     'text-center text-secondary',
@@ -419,39 +298,35 @@ if (main && originalRow) {
                 )
             );
         }
+
+        $list
+            .hide()
+            .fadeIn(200);
     }
 
-    search.addEventListener(
-        'input',
-        render
-    );
+    $search.on('input', render);
+    $specialty.on('change', render);
+    $sort.on('change', render);
 
-    specialty.addEventListener(
-        'change',
-        render
-    );
+    $reset.on('click', function () {
+        $search.val('');
+        $specialty.val('all');
+        $sort.val('default');
 
-    sort.addEventListener(
-        'change',
-        render
-    );
+        render();
 
-    reset.addEventListener(
-        'click',
-        () => {
-            search.value = '';
+        $search.trigger('focus');
+    });
 
-            specialty.value =
-                'all';
+    $main.on('click', '.trainer-unavailable', function (event) {
+        event.preventDefault();
 
-            sort.value =
-                'default';
-
-            render();
-
-            search.focus();
-        }
-    );
+        $(this)
+            .closest('.card')
+            .stop(true, true)
+            .fadeTo(120, 0.5)
+            .fadeTo(120, 1);
+    });
 
     render();
-}
+});

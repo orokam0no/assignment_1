@@ -1,633 +1,408 @@
 'use strict';
 
-const {
-    formatKZT,
-    createElement,
-    showMessage,
-    hideMessage,
-    setFieldState,
-    clearFieldState,
-    makeDemoReference
-} = window.BoxingClub;
+$(function () {
+    const {
+        formatKZT,
+        showMessage,
+        hideMessage,
+        setFieldState,
+        clearFieldState,
+        makeDemoReference
+    } = window.BoxingClub;
 
-const sessionPrices = {
-    group: {
-        label: 'Group Training',
-        price: 3500,
-        maxParticipants: 1
-    },
+    const sessionPrices = {
+        group: {
+            label: 'Group Training',
+            price: 3500,
+            maxParticipants: 1
+        },
+        personal: {
+            label: 'Personal Training',
+            price: 8000,
+            maxParticipants: 1
+        },
+        minigroup: {
+            label: 'Mini-Group',
+            price: 5000,
+            maxParticipants: 4
+        }
+    };
 
-    personal: {
-        label: 'Personal Training',
-        price: 8000,
-        maxParticipants: 1
-    },
+    const trainerNames = {
+        baglan: 'Baglan Kadyrbay',
+        kanysh: 'Kanysh Seidazym',
+        mikhail: 'Mikhail Shindin',
+        any: 'Any Trainer'
+    };
 
-    minigroup: {
-        label: 'Mini-Group',
-        price: 5000,
-        maxParticipants: 4
-    }
-};
+    const $form = $('#booking-form');
 
-const trainerNames = {
-    baglan: 'Baglan Kadyrbay',
-    kanysh: 'Kanysh Seidazym',
-    mikhail: 'Mikhail Shindin',
-    any: 'Any Trainer'
-};
+    function localDateString(date = new Date()) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
 
-const form =
-    document.querySelector('#booking-form');
-
-function localDateString(date = new Date()) {
-    const year =
-        date.getFullYear();
-
-    const month =
-        String(date.getMonth() + 1)
-            .padStart(2, '0');
-
-    const day =
-        String(date.getDate())
-            .padStart(2, '0');
-
-    return `${year}-${month}-${day}`;
-}
-
-function validateName(field) {
-    const value =
-        field.value.trim();
-
-    const valid =
-        /^[A-Za-zÀ-žА-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі' -]{2,50}$/
-            .test(value);
-
-    setFieldState(
-        field,
-        valid,
-
-        valid
-            ? 'Name looks good.'
-            : 'Enter a real name using 2–50 letters.'
-    );
-
-    return valid;
-}
-
-function validatePhone(field) {
-    const digits =
-        field.value.replace(/\D/g, '');
-
-    const valid =
-        digits.length === 11 &&
-        (
-            digits.startsWith('7') ||
-            digits.startsWith('8')
-        );
-
-    setFieldState(
-        field,
-        valid,
-
-        valid
-            ? 'Phone looks good.'
-            : 'Enter a Kazakhstan phone number with 11 digits.'
-    );
-
-    return valid;
-}
-
-function validateSelect(
-    field,
-    label
-) {
-    const valid =
-        field.value !== '';
-
-    setFieldState(
-        field,
-        valid,
-
-        valid
-            ? `${label} selected.`
-            : `Choose ${label.toLowerCase()}.`
-    );
-
-    return valid;
-}
-
-function validateDate(field) {
-    const today =
-        localDateString();
-
-    const valid =
-        field.value !== '' &&
-        field.value >= today;
-
-    setFieldState(
-        field,
-        valid,
-
-        valid
-            ? 'Date is available for a demo request.'
-            : 'Choose today or a future date.'
-    );
-
-    return valid;
-}
-
-function validateParticipants(
-    field,
-    sessionField
-) {
-    const value =
-        Number(field.value);
-
-    const session =
-        sessionPrices[sessionField.value];
-
-    const max =
-        session
-            ? session.maxParticipants
-            : 4;
-
-    const valid =
-        Number.isInteger(value) &&
-        value >= 1 &&
-        value <= max;
-
-    setFieldState(
-        field,
-        valid,
-
-        valid
-            ? 'Participant count accepted.'
-            : `Choose between 1 and ${max} participant(s) for this session.`
-    );
-
-    return valid;
-}
-
-function calculateTotal(
-    session,
-    participants
-) {
-    if (!sessionPrices[session]) {
-        return 0;
+        return `${year}-${month}-${day}`;
     }
 
-    return (
-        sessionPrices[session].price *
-        participants
+    function validateName($field) {
+        const value = $.trim($field.val());
+
+        const valid =
+            /^[A-Za-zÀ-žА-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі' -]{2,50}$/.test(value);
+
+        setFieldState(
+            $field,
+            valid,
+            valid
+                ? 'Name looks good.'
+                : 'Enter a real name using 2–50 letters.'
+        );
+
+        return valid;
+    }
+
+    function validatePhone($field) {
+        const digits = $field.val().replace(/\D/g, '');
+
+        const valid =
+            digits.length === 11 &&
+            (digits.startsWith('7') || digits.startsWith('8'));
+
+        setFieldState(
+            $field,
+            valid,
+            valid
+                ? 'Phone looks good.'
+                : 'Enter a Kazakhstan phone number with 11 digits.'
+        );
+
+        return valid;
+    }
+
+    function validateSelect($field, label) {
+        const valid = $field.val() !== '';
+
+        setFieldState(
+            $field,
+            valid,
+            valid
+                ? `${label} selected.`
+                : `Choose ${label.toLowerCase()}.`
+        );
+
+        return valid;
+    }
+
+    function validateDate($field) {
+        const today = localDateString();
+
+        const valid =
+            $field.val() !== '' &&
+            $field.val() >= today;
+
+        setFieldState(
+            $field,
+            valid,
+            valid
+                ? 'Date is available for a demo request.'
+                : 'Choose today or a future date.'
+        );
+
+        return valid;
+    }
+
+    function validateParticipants($field, $sessionField) {
+        const value = Number($field.val());
+        const session = sessionPrices[$sessionField.val()];
+        const max = session ? session.maxParticipants : 4;
+
+        const valid =
+            Number.isInteger(value) &&
+            value >= 1 &&
+            value <= max;
+
+        setFieldState(
+            $field,
+            valid,
+            valid
+                ? 'Participant count accepted.'
+                : `Choose between 1 and ${max} participant(s) for this session.`
+        );
+
+        return valid;
+    }
+
+    function calculateTotal(session, participants) {
+        if (!sessionPrices[session]) {
+            return 0;
+        }
+
+        return sessionPrices[session].price * participants;
+    }
+
+    if (!$form.length) {
+        return;
+    }
+
+    const $nameInput = $('#booking-name');
+    const $phoneInput = $('#booking-phone');
+    const $trainerSelect = $('#booking-trainer');
+    const $sessionSelect = $('#booking-session');
+    const $dateInput = $('#booking-date');
+    const $timeSelect = $('#booking-time');
+    const $errorBox = $('#booking-error');
+    const $confirmationBox = $('#booking-confirmation');
+
+    $dateInput.attr('min', localDateString());
+
+    const $participantsRow = $('<div>', {
+        class: 'row align-items-center mb-3'
+    });
+
+    const $labelCol = $('<div>', {
+        class: 'col-12 col-md-4'
+    });
+
+    const $inputCol = $('<div>', {
+        class: 'col-12 col-md-8'
+    });
+
+    const $participantsLabel = $('<label>', {
+        class: 'form-label fw-bold mb-md-0',
+        for: 'booking-participants',
+        text: 'Participants'
+    });
+
+    const $participantsInput = $('<input>', {
+        type: 'number',
+        id: 'booking-participants',
+        name: 'participants',
+        min: 1,
+        max: 4,
+        value: 1,
+        required: true,
+        class: 'form-control bg-dark text-white border-secondary'
+    });
+
+    $labelCol.append($participantsLabel);
+    $inputCol.append($participantsInput);
+
+    $participantsRow.append(
+        $labelCol,
+        $inputCol
     );
-}
 
-if (form) {
-    form.noValidate = true;
+    $dateInput
+        .closest('.row')
+        .after($participantsRow);
 
-    const nameInput =
-        document.querySelector(
-            '#booking-name'
-        );
+    const $summary = $('<div>', {
+        class: 'border border-secondary rounded-3 p-3 mt-4'
+    });
 
-    const phoneInput =
-        document.querySelector(
-            '#booking-phone'
-        );
-
-    const trainerSelect =
-        document.querySelector(
-            '#booking-trainer'
-        );
-
-    const sessionSelect =
-        document.querySelector(
-            '#booking-session'
-        );
-
-    const dateInput =
-        document.querySelector(
-            '#booking-date'
-        );
-
-    const timeSelect =
-        document.querySelector(
-            '#booking-time'
-        );
-
-    const errorBox =
-        document.querySelector(
-            '#booking-error'
-        );
-
-    const confirmationBox =
-        document.querySelector(
-            '#booking-confirmation'
-        );
-
-    dateInput.min =
-        localDateString();
-
-    const participantsRow =
-        createElement(
-            'div',
-            'row align-items-center mb-3'
-        );
-
-    const labelCol =
-        createElement(
-            'div',
-            'col-12 col-md-4'
-        );
-
-    const inputCol =
-        createElement(
-            'div',
-            'col-12 col-md-8'
-        );
-
-    const participantsLabel =
-        createElement(
-            'label',
-            'form-label fw-bold mb-md-0',
-            'Participants'
-        );
-
-    participantsLabel.htmlFor =
-        'booking-participants';
-
-    const participantsInput =
-        createElement(
-            'input',
-            'form-control bg-dark text-white border-secondary'
-        );
-
-    participantsInput.type =
-        'number';
-
-    participantsInput.id =
-        'booking-participants';
-
-    participantsInput.name =
-        'participants';
-
-    participantsInput.min = '1';
-    participantsInput.max = '4';
-    participantsInput.value = '1';
-    participantsInput.required = true;
-
-    labelCol.append(
-        participantsLabel
-    );
-
-    inputCol.append(
-        participantsInput
-    );
-
-    participantsRow.append(
-        labelCol,
-        inputCol
-    );
-
-    const dateRow =
-        dateInput.closest('.row');
-
-    dateRow.insertAdjacentElement(
-        'afterend',
-        participantsRow
-    );
-
-    const summary =
-        createElement(
-            'div',
-            'border border-secondary rounded-3 p-3 mt-4'
-        );
-
-    form.insertAdjacentElement(
-        'afterend',
-        summary
-    );
+    $form.after($summary);
 
     function updateSummary() {
-        const session =
-            sessionSelect.value;
+        const session = $sessionSelect.val();
+        const participants = Number($participantsInput.val()) || 1;
+        const price = calculateTotal(session, participants);
 
-        const participants =
-            Number(
-                participantsInput.value
-            ) || 1;
+        $summary.empty();
 
-        const price =
-            calculateTotal(
-                session,
-                participants
-            );
+        $('<h3>', {
+            class: 'h5 text-warning fw-bold',
+            text: 'Live Booking Summary'
+        }).appendTo($summary);
 
-        summary.replaceChildren(
-            createElement(
-                'h3',
-                'h5 text-warning fw-bold',
-                'Live Booking Summary'
-            ),
+        $('<p>', {
+            class: 'mb-1',
+            text: `Trainer: ${trainerNames[$trainerSelect.val()] || 'Not selected'}`
+        }).appendTo($summary);
 
-            createElement(
-                'p',
-                'mb-1',
-                `Trainer: ${
-                    trainerNames[
-                        trainerSelect.value
-                        ] || 'Not selected'
-                }`
-            ),
+        $('<p>', {
+            class: 'mb-1',
+            text: `Session: ${sessionPrices[session]?.label || 'Not selected'}`
+        }).appendTo($summary);
 
-            createElement(
-                'p',
-                'mb-1',
-                `Session: ${
-                    sessionPrices[session]
-                        ?.label ||
-                    'Not selected'
-                }`
-            ),
+        $('<p>', {
+            class: 'mb-1',
+            text: `Date: ${$dateInput.val() || 'Not selected'}`
+        }).appendTo($summary);
 
-            createElement(
-                'p',
-                'mb-1',
-                `Date: ${
-                    dateInput.value ||
-                    'Not selected'
-                }`
-            ),
+        $('<p>', {
+            class: 'mb-1',
+            text: `Time: ${$timeSelect.find('option:selected').text() || 'Not selected'}`
+        }).appendTo($summary);
 
-            createElement(
-                'p',
-                'mb-1',
-                `Time: ${
-                    timeSelect.options[
-                        timeSelect.selectedIndex
-                        ]?.text ||
-                    'Not selected'
-                }`
-            ),
+        $('<p>', {
+            class: 'mb-1',
+            text: `Participants: ${participants}`
+        }).appendTo($summary);
 
-            createElement(
-                'p',
-                'mb-1',
-                `Participants: ${participants}`
-            ),
-
-            createElement(
-                'p',
-                'fw-bold mb-0',
-                `Estimated total: ${formatKZT(price)}`
-            )
-        );
+        $('<p>', {
+            class: 'fw-bold mb-0',
+            text: `Estimated total: ${formatKZT(price)}`
+        }).appendTo($summary);
     }
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const chosenTrainer =
-        params.get('trainer');
-
-    const chosenSession =
-        params.get('session');
+    const params = new URLSearchParams(window.location.search);
+    const chosenTrainer = params.get('trainer');
+    const chosenSession = params.get('session');
 
     if (
         chosenTrainer &&
-        Object.hasOwn(
-            trainerNames,
-            chosenTrainer
-        )
+        Object.hasOwn(trainerNames, chosenTrainer)
     ) {
-        trainerSelect.value =
-            chosenTrainer;
+        $trainerSelect.val(chosenTrainer);
     }
 
     if (
         chosenSession &&
-        Object.hasOwn(
-            sessionPrices,
-            chosenSession
-        )
+        Object.hasOwn(sessionPrices, chosenSession)
     ) {
-        sessionSelect.value =
-            chosenSession;
+        $sessionSelect.val(chosenSession);
     }
 
-    [
-        trainerSelect,
-        sessionSelect,
-        dateInput,
-        timeSelect,
-        participantsInput
-    ].forEach((field) => {
-        field.addEventListener(
-            'change',
-            updateSummary
-        );
-    });
-
-    participantsInput.addEventListener(
-        'input',
-        updateSummary
-    );
-
-    nameInput.addEventListener(
-        'input',
-        () => {
-            validateName(nameInput);
-        }
-    );
-
-    phoneInput.addEventListener(
-        'input',
-        () => {
-            validatePhone(phoneInput);
-        }
-    );
-
-    sessionSelect.addEventListener(
+    $form.on(
         'change',
-        () => {
-            const session =
-                sessionPrices[
-                    sessionSelect.value
-                    ];
-
-            participantsInput.max =
-                String(
-                    session
-                        ?.maxParticipants || 4
-                );
-
-            if (
-                Number(
-                    participantsInput.value
-                ) >
-                Number(
-                    participantsInput.max
-                )
-            ) {
-                participantsInput.value =
-                    '1';
-            }
-
-            validateParticipants(
-                participantsInput,
-                sessionSelect
-            );
-
+        '#booking-trainer, #booking-session, #booking-date, #booking-time, #booking-participants',
+        function () {
             updateSummary();
         }
     );
 
-    form.addEventListener(
-        'reset',
-        () => {
-            window.setTimeout(
-                () => {
-                    form
-                        .querySelectorAll(
-                            'input, select'
-                        )
-                        .forEach(
-                            clearFieldState
-                        );
+    $participantsInput.on('input', function () {
+        updateSummary();
+        validateParticipants($(this), $sessionSelect);
+    });
 
-                    hideMessage(errorBox);
-                    hideMessage(
-                        confirmationBox
-                    );
+    $nameInput.on('input', function () {
+        validateName($(this));
+    });
 
-                    participantsInput.value =
-                        '1';
+    $phoneInput.on('input', function () {
+        validatePhone($(this));
+    });
 
-                    updateSummary();
-                },
-                0
-            );
+    $sessionSelect.on('change', function () {
+        const session = sessionPrices[$(this).val()];
+
+        $participantsInput.attr(
+            'max',
+            String(session?.maxParticipants || 4)
+        );
+
+        if (
+            Number($participantsInput.val()) >
+            Number($participantsInput.attr('max'))
+        ) {
+            $participantsInput.val('1');
         }
-    );
 
-    form.addEventListener(
-        'submit',
-        (event) => {
-            event.preventDefault();
+        validateParticipants(
+            $participantsInput,
+            $sessionSelect
+        );
 
-            hideMessage(errorBox);
+        updateSummary();
+    });
 
-            hideMessage(
-                confirmationBox
-            );
+    $form.on('reset', function () {
+        setTimeout(function () {
+            $form
+                .find('input, select')
+                .each(function () {
+                    clearFieldState($(this));
+                });
 
-            const checks = [
-                [
-                    nameInput,
-                    validateName(
-                        nameInput
-                    )
-                ],
+            hideMessage($errorBox);
+            hideMessage($confirmationBox);
 
-                [
-                    phoneInput,
-                    validatePhone(
-                        phoneInput
-                    )
-                ],
+            $participantsInput.val('1');
 
-                [
-                    trainerSelect,
-                    validateSelect(
-                        trainerSelect,
-                        'Trainer'
-                    )
-                ],
+            updateSummary();
+        }, 0);
+    });
 
-                [
-                    sessionSelect,
-                    validateSelect(
-                        sessionSelect,
-                        'Session type'
-                    )
-                ],
+    $form.on('submit', function (event) {
+        event.preventDefault();
 
-                [
-                    dateInput,
-                    validateDate(
-                        dateInput
-                    )
-                ],
+        hideMessage($errorBox);
+        hideMessage($confirmationBox);
 
-                [
-                    participantsInput,
-                    validateParticipants(
-                        participantsInput,
-                        sessionSelect
-                    )
-                ],
+        const checks = [
+            [$nameInput, validateName($nameInput)],
+            [$phoneInput, validatePhone($phoneInput)],
+            [
+                $trainerSelect,
+                validateSelect($trainerSelect, 'Trainer')
+            ],
+            [
+                $sessionSelect,
+                validateSelect($sessionSelect, 'Session type')
+            ],
+            [$dateInput, validateDate($dateInput)],
+            [
+                $participantsInput,
+                validateParticipants(
+                    $participantsInput,
+                    $sessionSelect
+                )
+            ],
+            [
+                $timeSelect,
+                validateSelect($timeSelect, 'Preferred time')
+            ]
+        ];
 
-                [
-                    timeSelect,
-                    validateSelect(
-                        timeSelect,
-                        'Preferred time'
-                    )
-                ]
-            ];
+        const firstInvalid = checks.find(([, valid]) => !valid);
 
-            const firstInvalid =
-                checks.find(
-                    ([, valid]) =>
-                        !valid
-                );
-
-            if (firstInvalid) {
-                showMessage(
-                    errorBox,
-                    'Please correct the highlighted fields before submitting.',
-                    'danger'
-                );
-
-                firstInvalid[0].focus();
-
-                return;
-            }
-
-            const participants =
-                Number(
-                    participantsInput.value
-                );
-
-            const total =
-                calculateTotal(
-                    sessionSelect.value,
-                    participants
-                );
-
-            const reference =
-                makeDemoReference('BOX');
-
+        if (firstInvalid) {
             showMessage(
-                confirmationBox,
-
-                `Demo request ${reference}: ` +
-                `${nameInput.value.trim()}, ` +
-                `${trainerNames[trainerSelect.value]}, ` +
-                `${sessionPrices[sessionSelect.value].label}, ` +
-                `${dateInput.value}, ` +
-                `${timeSelect.options[timeSelect.selectedIndex].text}, ` +
-                `${participants} participant(s), ` +
-                `estimated total ${formatKZT(total)}. ` +
-                `This is a front-end demo only; no booking or payment was sent to a server.`,
-
-                'success'
+                $errorBox,
+                'Please correct the highlighted fields before submitting.',
+                'danger'
             );
+
+            const $firstInvalid = firstInvalid[0];
+
+            $('html, body').animate(
+                {
+                    scrollTop: $firstInvalid.offset().top - 120
+                },
+                400,
+                function () {
+                    $firstInvalid.trigger('focus');
+                }
+            );
+
+            return;
         }
-    );
+
+        const participants = Number($participantsInput.val());
+
+        const total = calculateTotal(
+            $sessionSelect.val(),
+            participants
+        );
+
+        const reference = makeDemoReference('BOX');
+
+        showMessage(
+            $confirmationBox,
+            `Demo request ${reference}: ` +
+            `${$.trim($nameInput.val())}, ` +
+            `${trainerNames[$trainerSelect.val()]}, ` +
+            `${sessionPrices[$sessionSelect.val()].label}, ` +
+            `${$dateInput.val()}, ` +
+            `${$timeSelect.find('option:selected').text()}, ` +
+            `${participants} participant(s), ` +
+            `estimated total ${formatKZT(total)}. ` +
+            `This is a front-end demo only; no booking or payment was sent to a server.`,
+            'success'
+        );
+    });
 
     updateSummary();
-}
+});

@@ -1,105 +1,135 @@
 'use strict';
 
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+$(function () {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-function formatKZT(value) {
-    return `${Number(value).toLocaleString('en-US')} KZT`;
-}
-
-function createElement(tag, className = '', text = '') {
-    const element = document.createElement(tag);
-
-    if (className) {
-        element.className = className;
+    function formatKZT(value) {
+        return `${Number(value).toLocaleString('en-US')} KZT`;
     }
 
-    if (text) {
-        element.textContent = text;
+    function createElement(tag, className = '', text = '') {
+        const $element = $(`<${tag}>`);
+
+        if (className) {
+            $element.addClass(className);
+        }
+
+        if (text) {
+            $element.text(text);
+        }
+
+        return $element;
     }
 
-    return element;
-}
+    function showMessage(element, message, type = 'success') {
+        const $element = $(element);
 
-function showMessage(element, message, type = 'success') {
-    if (!element) {
-        return;
+        if (!$element.length) {
+            return;
+        }
+
+        $element
+            .text(message)
+            .removeClass('hidden alert-success alert-danger alert-warning alert-info')
+            .addClass(`alert-${type}`)
+            .stop(true, true)
+            .hide()
+            .fadeIn(250);
     }
 
-    element.textContent = message;
+    function hideMessage(element) {
+        const $element = $(element);
 
-    element.classList.remove(
-        'hidden',
-        'alert-success',
-        'alert-danger',
-        'alert-warning',
-        'alert-info'
-    );
+        if (!$element.length) {
+            return;
+        }
 
-    element.classList.add(`alert-${type}`);
-}
-
-function hideMessage(element) {
-    if (!element) {
-        return;
+        $element
+            .stop(true, true)
+            .fadeOut(150, function () {
+                $(this)
+                    .text('')
+                    .addClass('hidden')
+                    .show();
+            });
     }
 
-    element.textContent = '';
-    element.classList.add('hidden');
-}
+    function setFieldState(field, valid, message = '') {
+        const $field = $(field);
 
-function setFieldState(field, valid, message = '') {
-    if (!field) {
-        return;
+        if (!$field.length) {
+            return;
+        }
+
+        $field
+            .removeClass('is-valid is-invalid')
+            .addClass(valid ? 'is-valid' : 'is-invalid');
+
+        let $feedback = $field.siblings('.js-feedback');
+
+        if (!$feedback.length) {
+            $feedback = $('<div>', {
+                class: 'js-feedback small mt-1'
+            });
+
+            $field.after($feedback);
+        }
+
+        $feedback
+            .removeClass('text-success text-danger')
+            .addClass(valid ? 'text-success' : 'text-danger')
+            .text(message);
     }
 
-    field.classList.remove('is-valid', 'is-invalid');
-    field.classList.add(valid ? 'is-valid' : 'is-invalid');
+    function clearFieldState(field) {
+        const $field = $(field);
 
-    let feedback = field.parentElement.querySelector('.js-feedback');
+        if (!$field.length) {
+            return;
+        }
 
-    if (!feedback) {
-        feedback = createElement('div', 'js-feedback small mt-1');
-        field.insertAdjacentElement('afterend', feedback);
+        $field.removeClass('is-valid is-invalid');
+        $field.siblings('.js-feedback').remove();
     }
 
-    feedback.classList.remove('text-success', 'text-danger');
-    feedback.classList.add(valid ? 'text-success' : 'text-danger');
-    feedback.textContent = message;
-}
-
-function clearFieldState(field) {
-    if (!field) {
-        return;
+    function makeDemoReference(prefix) {
+        const number = Math.floor(100000 + Math.random() * 900000);
+        return `${prefix}-${number}`;
     }
 
-    field.classList.remove('is-valid', 'is-invalid');
+    $('a[href]').each(function () {
+        const href = $(this).attr('href');
 
-    const feedback = field.parentElement.querySelector('.js-feedback');
+        if (href && href.split('#')[0] === currentPage) {
+            $(this).attr('aria-current', 'page');
+        }
+    });
 
-    if (feedback) {
-        feedback.remove();
-    }
-}
+    $('.nav-link').on('mouseenter', function () {
+        $(this).stop(true).fadeTo(150, 0.65);
+    });
 
-function makeDemoReference(prefix) {
-    const number = Math.floor(100000 + Math.random() * 900000);
-    return `${prefix}-${number}`;
-}
+    $('.nav-link').on('mouseleave', function () {
+        $(this).stop(true).fadeTo(150, 1);
+    });
 
-document.querySelectorAll('a[href]').forEach((link) => {
-    const href = link.getAttribute('href');
+    $('input[type="checkbox"]').on('change', function () {
+        const checked = $(this).prop('checked');
 
-    if (href && href.split('#')[0] === currentPage) {
-        link.setAttribute('aria-current', 'page');
-    }
+        $(this)
+            .closest('label')
+            .toggleClass('text-warning', checked);
+    });
+
+    $('input[type="checkbox"]:checked').attr('data-checked', 'true');
+
+    window.BoxingClub = {
+        formatKZT,
+        createElement,
+        showMessage,
+        hideMessage,
+        setFieldState,
+        clearFieldState,
+        makeDemoReference
+    };
 });
-
-window.BoxingClub = {
-    formatKZT,
-    createElement,
-    showMessage,
-    hideMessage,
-    setFieldState,
-    clearFieldState,
-    makeDemoReference
-};
