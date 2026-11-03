@@ -59,9 +59,14 @@ function setFieldState(field, valid, message = '') {
 
     $field
         .removeClass('is-valid is-invalid')
-        .addClass(valid ? 'is-valid' : 'is-invalid');
+        .addClass(
+            valid
+                ? 'is-valid'
+                : 'is-invalid'
+        );
 
-    let $feedback = $field.siblings('.js-feedback');
+    let $feedback =
+        $field.siblings('.js-feedback');
 
     if (!$feedback.length) {
         $feedback = $('<div>', {
@@ -72,8 +77,14 @@ function setFieldState(field, valid, message = '') {
     }
 
     $feedback
-        .removeClass('text-success text-danger')
-        .addClass(valid ? 'text-success' : 'text-danger')
+        .removeClass(
+            'text-success text-danger'
+        )
+        .addClass(
+            valid
+                ? 'text-success'
+                : 'text-danger'
+        )
         .text(message);
 }
 
@@ -84,13 +95,21 @@ function clearFieldState(field) {
         return;
     }
 
-    $field.removeClass('is-valid is-invalid');
-    $field.siblings('.js-feedback').remove();
+    $field.removeClass(
+        'is-valid is-invalid'
+    );
+
+    $field
+        .siblings('.js-feedback')
+        .remove();
 }
 
 function makeDemoReference(prefix) {
     const number =
-        Math.floor(100000 + Math.random() * 900000);
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
 
     return `${prefix}-${number}`;
 }
@@ -106,21 +125,27 @@ window.BoxingClub = {
 };
 
 $(function () {
+
     const currentPage =
-        window.location.pathname.split('/').pop() ||
-        'index.html';
+        window.location.pathname
+            .split('/')
+            .pop() || 'index.html';
 
     $('a[href]').each(function () {
-        const href = $(this).attr('href');
+
+        const href =
+            $(this).attr('href');
 
         if (
             href &&
             href.split('#')[0] === currentPage
         ) {
-            $(this).attr(
-                'aria-current',
-                'page'
-            );
+            $(this)
+                .addClass('active')
+                .attr(
+                    'aria-current',
+                    'page'
+                );
         }
     });
 
@@ -145,6 +170,7 @@ $(function () {
     $('input[type="checkbox"]').on(
         'change',
         function () {
+
             const checked =
                 $(this).prop('checked');
 
@@ -157,6 +183,4 @@ $(function () {
         }
     );
 
-    $('input[type="checkbox"]:checked')
-        .attr('data-checked', 'true');
 });
