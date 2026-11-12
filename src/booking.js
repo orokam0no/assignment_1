@@ -1,3 +1,4 @@
+
 'use strict';
 
 $(function () {
@@ -6,8 +7,7 @@ $(function () {
         showMessage,
         hideMessage,
         setFieldState,
-        clearFieldState,
-        makeDemoReference
+        clearFieldState
     } = window.BoxingClub;
 
     const sessionPrices = {
@@ -62,19 +62,42 @@ $(function () {
         return valid;
     }
 
-    function validatePhone($field) {
-        const digits = $field.val().replace(/\D/g, '');
+    function normalizePhone(value) {
+        let digits = String(value).replace(/\D/g, '');
 
-        const valid =
-            digits.length === 11 &&
-            (digits.startsWith('7') || digits.startsWith('8'));
+        if (digits.length === 11 && digits.startsWith('8')) {
+            digits = '7' + digits.slice(1);
+        }
+
+        return digits;
+    }
+
+    function formatKazakhstanPhone(value) {
+        const digits = normalizePhone(value);
+
+        if (!/^77\d{9}$/.test(digits)) {
+            return value;
+        }
+
+        return (
+            '+7 ' +
+            digits.slice(1, 4) + ' ' +
+            digits.slice(4, 7) + ' ' +
+            digits.slice(7, 9) + ' ' +
+            digits.slice(9, 11)
+        );
+    }
+
+    function validatePhone($field) {
+        const digits = normalizePhone($field.val());
+        const valid = /^77\d{9}$/.test(digits);
 
         setFieldState(
             $field,
             valid,
             valid
-                ? 'Phone looks good.'
-                : 'Enter a Kazakhstan phone number with 11 digits.'
+                ? 'Valid Kazakhstan mobile number.'
+                : 'Enter a Kazakhstan mobile number, for example +7 775 123 45 67.'
         );
 
         return valid;
@@ -118,6 +141,7 @@ $(function () {
         const max = session ? session.maxParticipants : 4;
 
         const valid =
+            $field.val() !== '' &&
             Number.isInteger(value) &&
             value >= 1 &&
             value <= max;
@@ -153,6 +177,13 @@ $(function () {
     const $timeSelect = $('#booking-time');
     const $errorBox = $('#booking-error');
     const $confirmationBox = $('#booking-confirmation');
+
+    $phoneInput.attr({
+        placeholder: '+7 775 123 45 67',
+        type: 'tel',
+        autocomplete: 'tel',
+        inputmode: 'tel'
+    });
 
     $dateInput.attr('min', localDateString());
 
@@ -285,6 +316,14 @@ $(function () {
         validatePhone($(this));
     });
 
+    $phoneInput.on('blur', function () {
+        if (validatePhone($(this))) {
+            $(this).val(
+                formatKazakhstanPhone($(this).val())
+            );
+        }
+    });
+
     $sessionSelect.on('change', function () {
         const session = sessionPrices[$(this).val()];
 
@@ -380,28 +419,12 @@ $(function () {
             return;
         }
 
-        const participants = Number($participantsInput.val());
 
-        const total = calculateTotal(
-            $sessionSelect.val(),
-            participants
+        $phoneInput.val(
+            formatKazakhstanPhone($phoneInput.val())
         );
 
-        const reference = makeDemoReference('BOX');
-
-        showMessage(
-            $confirmationBox,
-            `Demo request ${reference}: ` +
-            `${$.trim($nameInput.val())}, ` +
-            `${trainerNames[$trainerSelect.val()]}, ` +
-            `${sessionPrices[$sessionSelect.val()].label}, ` +
-            `${$dateInput.val()}, ` +
-            `${$timeSelect.find('option:selected').text()}, ` +
-            `${participants} participant(s), ` +
-            `estimated total ${formatKZT(total)}. ` +
-            `This is a front-end demo only; no booking or payment was sent to a server.`,
-            'success'
-        );
+        updateSummary();
     });
 
     updateSummary();

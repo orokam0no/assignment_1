@@ -1,3 +1,4 @@
+
 'use strict';
 
 $(function () {
@@ -87,10 +88,15 @@ $(function () {
             class: 'img-fluid rounded equipment-img my-3'
         });
 
+        // Status is displayed as plain text, not a button/badge
         const $status = createElement(
             'span',
-            `badge ${item.available ? 'text-bg-warning' : 'text-bg-secondary'} mb-2`,
-            item.available ? 'Available' : 'Temporarily unavailable'
+            item.available
+                ? 'text-success fw-semibold text-center mb-2'
+                : 'text-secondary fw-semibold text-center mb-2',
+            item.available
+                ? 'Available'
+                : 'Temporarily unavailable'
         );
 
         $body.append(
