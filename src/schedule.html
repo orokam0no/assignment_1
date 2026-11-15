@@ -1,72 +1,109 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>Training Schedule | Old School Boxing Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Weekly training schedule at Old School Boxing Club in Astana.">
+
+    <title>Old School Boxing Club - Schedule</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet">
+
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="assylkhan.css">
 </head>
-<body class="bg-black text-white">
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">
-                OLD SCHOOL BOXING CLUB
-            </a>
+<body class="bg-black text-white lh-base">
 
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#mainNav"
-                    aria-controls="mainNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<header class="main-header-bootstrap bg-black border-bottom border-2 border-warning">
+    <nav class="navbar navbar-expand-md navbar-dark container py-3">
 
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="equipment.html">EQUIPMENT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="booking.html">BOOKING</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active"
-                           href="schedule.html">SCHEDULE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="prices.html">PRICES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="trainers.html">TRAINERS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">ACCOUNT</a>
-                    </li>
-                </ul>
+        <a class="navbar-brand text-warning fw-bold fs-5 brand-animation"
+           href="index.html">
+            OLD SCHOOL BOXING CLUB
+        </a>
+
+        <button class="navbar-toggler border-warning"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <div class="navbar-nav ms-auto text-center gap-md-2 nav-animation">
+
+                <a href="index.html"
+                   class="nav-link fw-semibold nav-popup"
+                   data-label="Home page">HOME</a>
+
+                <a href="equipment.html"
+                   class="nav-link fw-semibold nav-popup"
+                   data-label="View our equipment">EQUIPMENT</a>
+
+                <a href="booking.html"
+                   class="nav-link fw-semibold nav-popup"
+                   data-label="Book a training session">BOOKING</a>
+
+                <a href="schedule.html"
+                   class="nav-link fw-semibold active nav-popup"
+                   data-label="Weekly training schedule"
+                   aria-current="page">SCHEDULE</a>
+
+                <a href="prices.html"
+                   class="nav-link fw-semibold nav-popup"
+                   data-label="View membership prices">PRICES</a>
+
+                <a href="trainers.html"
+                   class="nav-link fw-semibold nav-popup"
+                   data-label="Meet our trainers">TRAINERS</a>
+
+                <a href="login.html"
+                   class="nav-link fw-semibold nav-popup"
+                   data-label="Member account">ACCOUNT</a>
+
             </div>
         </div>
     </nav>
 </header>
 
-<main id="schedule-page"></main>
+<main id="schedule-page" class="container py-5">
+    <!-- Schedule cards are created by schedule.js -->
+</main>
 
-<footer class="bg-dark text-white-50 py-4">
-    <div class="container text-center">
-        <p class="mb-1">Old School Boxing Club</p>
-        <p class="mb-0">
-            Turan Ave 19, BOK Keremet, 2nd Floor, Astana
+<footer class="bg-black border-top border-secondary text-center py-4 mt-5">
+    <div class="container">
+
+        <p class="small text-secondary mb-1">
+            Turan Ave 19, BOK "Keremet", 2nd floor, Astana
         </p>
+
+        <p class="small text-secondary mb-2">
+            &copy; 2026 Old School Boxing Club.
+        </p>
+
+        <p class="mb-0">
+            <a href="mailto:info@oldschoolboxing.kz"
+               class="link-secondary text-decoration-none">
+                info@oldschoolboxing.kz
+            </a>
+
+            <span class="mx-2">|</span>
+
+            <a href="tel:+77087253626"
+               class="link-secondary text-decoration-none">
+                +7 708 725 36 26
+            </a>
+        </p>
+
     </div>
 </footer>
 
@@ -74,5 +111,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="main.js"></script>
 <script src="schedule.js"></script>
+
 </body>
 </html>

@@ -24,7 +24,7 @@ $(function () {
         minigroup: {
             label: 'Mini-Group',
             price: 5000,
-            maxParticipants: 4
+            maxParticipants: 1
         }
     };
 
@@ -135,34 +135,24 @@ $(function () {
         return valid;
     }
 
-    function validateParticipants($field, $sessionField) {
-        const value = Number($field.val());
-        const session = sessionPrices[$sessionField.val()];
-        const max = session ? session.maxParticipants : 4;
-
-        const valid =
-            $field.val() !== '' &&
-            Number.isInteger(value) &&
-            value >= 1 &&
-            value <= max;
+    function validateParticipants($field) {
+        $field.val('1');
 
         setFieldState(
             $field,
-            valid,
-            valid
-                ? 'Participant count accepted.'
-                : `Choose between 1 and ${max} participant(s) for this session.`
+            true,
+            'One participant selected.'
         );
 
-        return valid;
+        return true;
     }
 
-    function calculateTotal(session, participants) {
+    function calculateTotal(session) {
         if (!sessionPrices[session]) {
             return 0;
         }
 
-        return sessionPrices[session].price * participants;
+        return sessionPrices[session].price;
     }
 
     if (!$form.length) {
@@ -187,6 +177,7 @@ $(function () {
 
     $dateInput.attr('min', localDateString());
 
+    // Participants field: always exactly 1
     const $participantsRow = $('<div>', {
         class: 'row align-items-center mb-3'
     });
@@ -210,8 +201,10 @@ $(function () {
         id: 'booking-participants',
         name: 'participants',
         min: 1,
-        max: 4,
+        max: 1,
+        step: 1,
         value: 1,
+        readonly: true,
         required: true,
         class: 'form-control bg-dark text-white border-secondary'
     });
@@ -236,8 +229,9 @@ $(function () {
 
     function updateSummary() {
         const session = $sessionSelect.val();
-        const participants = Number($participantsInput.val()) || 1;
-        const price = calculateTotal(session, participants);
+        const price = calculateTotal(session);
+
+        $participantsInput.val('1');
 
         $summary.empty();
 
@@ -263,12 +257,14 @@ $(function () {
 
         $('<p>', {
             class: 'mb-1',
-            text: `Time: ${$timeSelect.find('option:selected').text() || 'Not selected'}`
+            text: `Time: ${$timeSelect.val()
+                ? $timeSelect.find('option:selected').text()
+                : 'Not selected'}`
         }).appendTo($summary);
 
         $('<p>', {
             class: 'mb-1',
-            text: `Participants: ${participants}`
+            text: 'Participants: 1'
         }).appendTo($summary);
 
         $('<p>', {
@@ -277,6 +273,7 @@ $(function () {
         }).appendTo($summary);
     }
 
+    // Prefill trainer and session from schedule page
     const params = new URLSearchParams(window.location.search);
     const chosenTrainer = params.get('trainer');
     const chosenSession = params.get('session');
@@ -297,15 +294,15 @@ $(function () {
 
     $form.on(
         'change',
-        '#booking-trainer, #booking-session, #booking-date, #booking-time, #booking-participants',
+        '#booking-trainer, #booking-session, #booking-date, #booking-time',
         function () {
             updateSummary();
         }
     );
 
-    $participantsInput.on('input', function () {
+    $participantsInput.on('input change', function () {
+        $(this).val('1');
         updateSummary();
-        validateParticipants($(this), $sessionSelect);
     });
 
     $nameInput.on('input', function () {
@@ -325,25 +322,7 @@ $(function () {
     });
 
     $sessionSelect.on('change', function () {
-        const session = sessionPrices[$(this).val()];
-
-        $participantsInput.attr(
-            'max',
-            String(session?.maxParticipants || 4)
-        );
-
-        if (
-            Number($participantsInput.val()) >
-            Number($participantsInput.attr('max'))
-        ) {
-            $participantsInput.val('1');
-        }
-
-        validateParticipants(
-            $participantsInput,
-            $sessionSelect
-        );
-
+        $participantsInput.val('1');
         updateSummary();
     });
 
@@ -370,6 +349,8 @@ $(function () {
         hideMessage($errorBox);
         hideMessage($confirmationBox);
 
+        $participantsInput.val('1');
+
         const checks = [
             [$nameInput, validateName($nameInput)],
             [$phoneInput, validatePhone($phoneInput)],
@@ -384,10 +365,7 @@ $(function () {
             [$dateInput, validateDate($dateInput)],
             [
                 $participantsInput,
-                validateParticipants(
-                    $participantsInput,
-                    $sessionSelect
-                )
+                validateParticipants($participantsInput)
             ],
             [
                 $timeSelect,
@@ -419,12 +397,22 @@ $(function () {
             return;
         }
 
-
         $phoneInput.val(
             formatKazakhstanPhone($phoneInput.val())
         );
 
         updateSummary();
+
+        const reference = 'BOX-' +
+            Date.now().toString().slice(-8);
+
+        showMessage(
+            $confirmationBox,
+            'Booking Successful! Your booking reference: ' +
+            reference +
+            '. This is a demo request; no real booking was saved.',
+            'success'
+        );
     });
 
     updateSummary();
